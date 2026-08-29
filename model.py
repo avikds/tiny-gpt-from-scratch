@@ -631,8 +631,9 @@ def run_training_loop(params, batches, num_steps, learning_rate):
 def last_position_logits(logits):
     return logits[:, -1, :]
 
-# Step 38 - scale_logits_by_temperature (not yet solved)
-# TODO: implement
+# Step 38 - scale_logits_by_temperature
+def scale_logits_by_temperature(logits, temperature):
+    return logits / temperature
 
 # Step 39 - top_k_filter_logits (not yet solved)
 # TODO: implement
