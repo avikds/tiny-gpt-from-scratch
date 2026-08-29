@@ -11,7 +11,7 @@ from model import *  # noqa: F401, F403 (pulls in your solution functions)
 
 import numpy as np
 
-from solution import (
+from model import (
     build_char_vocab,
     build_id_to_char,
     encode_text,
