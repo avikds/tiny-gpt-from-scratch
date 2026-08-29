@@ -240,8 +240,42 @@ def gpt_backbone(x, blocks_params, num_heads):
 def project_to_vocab_logits(hidden_states, w_out, b_out):
     return linear_projection(hidden_states, w_out, b_out)
 
-# Step 30 - gpt_forward (not yet solved)
-# TODO: implement
+# Step 30 - gpt_forward
+def gpt_forward(token_ids, params, num_heads):
+    # Token embeddings
+    x = token_embedding_lookup(
+        token_ids,
+        params["token_embedding"]
+    )
+
+    # Add positional embeddings
+    x = add_positional_embeddings(
+        x,
+        params["pos_embedding"]
+    )
+
+    # Transformer backbone
+    x = gpt_backbone(
+        x,
+        params["blocks"],
+        num_heads
+    )
+
+    # Final LayerNorm
+    x = layer_norm(
+        x,
+        params["ln_f_gamma"],
+        params["ln_f_beta"]
+    )
+
+    # Language-model output head
+    logits = project_to_vocab_logits(
+        x,
+        params["w_out"],
+        params["b_out"]
+    )
+
+    return logits
 
 # Step 31 - cross_entropy_language_modeling_loss (not yet solved)
 # TODO: implement
