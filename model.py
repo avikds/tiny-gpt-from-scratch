@@ -200,8 +200,10 @@ def layer_norm(x, gamma, beta, eps=1e-5):
     normalized = (x - mean) / np.sqrt(var + eps)
     return normalized * gamma + beta
 
-# Step 26 - pre_norm_residual_sublayer (not yet solved)
-# TODO: implement
+# Step 26 - pre_norm_residual_sublayer
+def pre_norm_residual_sublayer(x, gamma, beta, sublayer_fn):
+    normalized = layer_norm(x, gamma, beta)
+    return x + sublayer_fn(normalized)
 
 # Step 27 - transformer_block (not yet solved)
 # TODO: implement
