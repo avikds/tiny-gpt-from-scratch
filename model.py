@@ -129,8 +129,10 @@ def multi_head_scaled_dot_product_attention(q, k, v, num_heads):
 
     return attention_context(attn_weights, v)
 
-# Step 18 - merge_and_output_project (not yet solved)
-# TODO: implement
+# Step 18 - merge_and_output_project
+def merge_and_output_project(head_context, w_o, b_o):
+    merged = merge_heads(head_context)
+    return linear_projection(merged, w_o, b_o)
 
 # Step 19 - masked_multi_head_self_attention (not yet solved)
 # TODO: implement
