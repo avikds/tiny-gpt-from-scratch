@@ -41,8 +41,9 @@ def make_batches(data, batch_size, block_size, rng):
 
     return x, y
 
-# Step 6 - token_embedding_lookup (not yet solved)
-# TODO: implement
+# Step 6 - token_embedding_lookup
+def token_embedding_lookup(token_ids, embedding_table):
+    return embedding_table[token_ids]
 
 # Step 7 - add_positional_embeddings (not yet solved)
 # TODO: implement

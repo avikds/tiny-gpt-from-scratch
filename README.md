@@ -15,7 +15,7 @@ python scaffold.py
 - [x] **3.** encode_text
 - [x] **4.** decode_ids
 - [x] **5.** make_batches
-- [ ] **6.** token_embedding_lookup
+- [x] **6.** token_embedding_lookup
 - [ ] **7.** add_positional_embeddings
 - [ ] **8.** linear_projection
 - [ ] **9.** compute_attention_scores
