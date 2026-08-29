@@ -101,8 +101,13 @@ def merge_heads(x):
     x = x.transpose(0, 2, 1, 3)
     return x.reshape(B, T, num_heads * head_dim)
 
-# Step 16 - project_qkv (not yet solved)
-# TODO: implement
+# Step 16 - project_qkv
+def project_qkv(x, w_q, b_q, w_k, b_k, w_v, b_v):
+    q = linear_projection(x, w_q, b_q)
+    k = linear_projection(x, w_k, b_k)
+    v = linear_projection(x, w_v, b_v)
+
+    return q, k, v
 
 # Step 17 - multi_head_scaled_dot_product_attention (not yet solved)
 # TODO: implement
