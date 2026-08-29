@@ -205,8 +205,29 @@ def pre_norm_residual_sublayer(x, gamma, beta, sublayer_fn):
     normalized = layer_norm(x, gamma, beta)
     return x + sublayer_fn(normalized)
 
-# Step 27 - transformer_block (not yet solved)
-# TODO: implement
+# Step 27 - transformer_block
+def transformer_block(x, params, num_heads):
+    """One transformer block: pre-norm attention sublayer then pre-norm FFN sublayer."""
+
+    x = pre_norm_residual_sublayer(
+        x,
+        params["ln1_gamma"],
+        params["ln1_beta"],
+        lambda t: masked_multi_head_self_attention(
+            t, params["attn"], num_heads
+        )
+    )
+
+    x = pre_norm_residual_sublayer(
+        x,
+        params["ln2_gamma"],
+        params["ln2_beta"],
+        lambda t: position_wise_feed_forward(
+            t, params["ffn"]
+        )
+    )
+
+    return x
 
 # Step 28 - gpt_backbone (not yet solved)
 # TODO: implement
