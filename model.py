@@ -572,8 +572,35 @@ def training_step(params, input_ids, target_ids):
 
     return loss, grads
 
-# Step 35 - apply_optimizer_update (not yet solved)
-# TODO: implement
+# Step 35 - apply_optimizer_update
+import numpy as np
+
+def apply_optimizer_update(params, grads, learning_rate):
+    # Recursively walk through the parameter structure.
+    if isinstance(params, np.ndarray):
+        params -= learning_rate * grads
+        return params
+
+    if isinstance(params, dict):
+        for key in params:
+            if key in grads:
+                apply_optimizer_update(
+                    params[key],
+                    grads[key],
+                    learning_rate
+                )
+        return params
+
+    if isinstance(params, list):
+        for i in range(len(params)):
+            apply_optimizer_update(
+                params[i],
+                grads[i],
+                learning_rate
+            )
+        return params
+
+    return params
 
 # Step 36 - run_training_loop (not yet solved)
 # TODO: implement

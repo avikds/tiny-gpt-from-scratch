@@ -44,7 +44,7 @@ python scaffold.py
 - [x] **32.** init_gpt_parameters
 - [x] **33.** collect_parameters
 - [x] **34.** training_step
-- [ ] **35.** apply_optimizer_update
+- [x] **35.** apply_optimizer_update
 - [ ] **36.** run_training_loop
 - [ ] **37.** last_position_logits
 - [ ] **38.** scale_logits_by_temperature
