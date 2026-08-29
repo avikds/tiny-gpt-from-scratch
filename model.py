@@ -59,8 +59,9 @@ def linear_projection(x, weight, bias):
 
     return output
 
-# Step 9 - compute_attention_scores (not yet solved)
-# TODO: implement
+# Step 9 - compute_attention_scores
+def compute_attention_scores(q, k):
+    return q @ np.swapaxes(k, -1, -2)
 
 # Step 10 - scale_attention_scores (not yet solved)
 # TODO: implement
