@@ -627,8 +627,9 @@ def run_training_loop(params, batches, num_steps, learning_rate):
 
     return losses
 
-# Step 37 - last_position_logits (not yet solved)
-# TODO: implement
+# Step 37 - last_position_logits
+def last_position_logits(logits):
+    return logits[:, -1, :]
 
 # Step 38 - scale_logits_by_temperature (not yet solved)
 # TODO: implement
