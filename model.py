@@ -153,8 +153,15 @@ def masked_multi_head_self_attention(x, params, num_heads):
         params["b_o"]
     )
 
-# Step 20 - gelu_activation (not yet solved)
-# TODO: implement
+# Step 20 - gelu_activation
+def gelu_activation(x):
+    """Apply tanh-approximate GELU elementwise. Return array of same shape."""
+    
+    return 0.5 * x * (
+        1.0 + np.tanh(
+            np.sqrt(2.0 / np.pi) * (x + 0.044715 * x ** 3)
+        )
+    )
 
 # Step 21 - ffn_first_layer (not yet solved)
 # TODO: implement
