@@ -14,7 +14,7 @@ python scaffold.py
 - [x] **2.** build_id_to_char
 - [x] **3.** encode_text
 - [x] **4.** decode_ids
-- [ ] **5.** make_batches
+- [x] **5.** make_batches
 - [ ] **6.** token_embedding_lookup
 - [ ] **7.** add_positional_embeddings
 - [ ] **8.** linear_projection

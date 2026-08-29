@@ -25,8 +25,21 @@ def encode_text(text, char_to_id):
 def decode_ids(ids, id_to_char):
     return ''.join(id_to_char[int(idx)] for idx in ids)
 
-# Step 5 - make_batches (not yet solved)
-# TODO: implement
+# Step 5 - make_batches
+def make_batches(data, batch_size, block_size, rng):
+    starts = rng.integers(0, len(data) - block_size, size=batch_size)
+
+    x = np.array(
+        [data[start:start + block_size] for start in starts],
+        dtype=np.int64
+    )
+
+    y = np.array(
+        [data[start + 1:start + block_size + 1] for start in starts],
+        dtype=np.int64
+    )
+
+    return x, y
 
 # Step 6 - token_embedding_lookup (not yet solved)
 # TODO: implement
