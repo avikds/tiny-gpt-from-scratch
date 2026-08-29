@@ -94,8 +94,12 @@ def split_heads(x, num_heads):
     x = x.reshape(B, T, num_heads, head_dim)
     return x.transpose(0, 2, 1, 3)
 
-# Step 15 - merge_heads (not yet solved)
-# TODO: implement
+# Step 15 - merge_heads
+def merge_heads(x):
+    B, num_heads, T, head_dim = x.shape
+
+    x = x.transpose(0, 2, 1, 3)
+    return x.reshape(B, T, num_heads * head_dim)
 
 # Step 16 - project_qkv (not yet solved)
 # TODO: implement

@@ -24,7 +24,7 @@ python scaffold.py
 - [x] **12.** softmax_attention_weights
 - [x] **13.** attention_context
 - [x] **14.** split_heads
-- [ ] **15.** merge_heads
+- [x] **15.** merge_heads
 - [ ] **16.** project_qkv
 - [ ] **17.** multi_head_scaled_dot_product_attention
 - [ ] **18.** merge_and_output_project
