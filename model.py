@@ -80,8 +80,9 @@ def softmax_attention_weights(masked_scores):
     exp_scores = np.exp(shifted)
     return exp_scores / np.sum(exp_scores, axis=-1, keepdims=True)
 
-# Step 13 - attention_context (not yet solved)
-# TODO: implement
+# Step 13 - attention_context
+def attention_context(attn_weights, v):
+    return attn_weights @ v
 
 # Step 14 - split_heads (not yet solved)
 # TODO: implement

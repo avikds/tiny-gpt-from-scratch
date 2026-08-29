@@ -22,7 +22,7 @@ python scaffold.py
 - [x] **10.** scale_attention_scores
 - [x] **11.** apply_causal_mask
 - [x] **12.** softmax_attention_weights
-- [ ] **13.** attention_context
+- [x] **13.** attention_context
 - [ ] **14.** split_heads
 - [ ] **15.** merge_heads
 - [ ] **16.** project_qkv
