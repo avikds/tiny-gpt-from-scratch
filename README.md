@@ -28,7 +28,7 @@ python scaffold.py
 - [x] **16.** project_qkv
 - [x] **17.** multi_head_scaled_dot_product_attention
 - [x] **18.** merge_and_output_project
-- [ ] **19.** masked_multi_head_self_attention
+- [x] **19.** masked_multi_head_self_attention
 - [ ] **20.** gelu_activation
 - [ ] **21.** ffn_first_layer
 - [ ] **22.** ffn_second_layer

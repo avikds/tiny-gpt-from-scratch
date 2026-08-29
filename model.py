@@ -134,8 +134,24 @@ def merge_and_output_project(head_context, w_o, b_o):
     merged = merge_heads(head_context)
     return linear_projection(merged, w_o, b_o)
 
-# Step 19 - masked_multi_head_self_attention (not yet solved)
-# TODO: implement
+# Step 19 - masked_multi_head_self_attention
+def masked_multi_head_self_attention(x, params, num_heads):
+    q, k, v = project_qkv(
+        x,
+        params["w_q"], params["b_q"],
+        params["w_k"], params["b_k"],
+        params["w_v"], params["b_v"]
+    )
+
+    head_context = multi_head_scaled_dot_product_attention(
+        q, k, v, num_heads
+    )
+
+    return merge_and_output_project(
+        head_context,
+        params["w_o"],
+        params["b_o"]
+    )
 
 # Step 20 - gelu_activation (not yet solved)
 # TODO: implement
