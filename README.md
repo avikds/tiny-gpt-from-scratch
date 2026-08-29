@@ -50,7 +50,7 @@ python scaffold.py
 - [x] **38.** scale_logits_by_temperature
 - [x] **39.** top_k_filter_logits
 - [x] **40.** sample_next_token
-- [ ] **41.** generate_text
+- [x] **41.** generate_text
 
 ---
 

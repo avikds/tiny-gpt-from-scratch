@@ -688,6 +688,63 @@ def sample_next_token(filtered_logits, rng):
 
     return samples
 
-# Step 41 - generate_text (not yet solved)
-# TODO: implement
+# Step 41 - generate_text
+def generate_text(
+    params,
+    prompt,
+    num_new_tokens,
+    max_seq_len,
+    vocab,
+    id_to_char,
+    temperature=1.0,
+    top_k=None,
+    seed=0
+):
+    # Encode the prompt into token ids.
+    token_ids = encode_text(prompt, vocab).tolist()
+
+    # Reproducible random number generator.
+    rng = np.random.default_rng(seed)
+
+    for _ in range(num_new_tokens):
+        # Keep only the most recent max_seq_len tokens for model input.
+        context_ids = np.array(
+            [token_ids[-max_seq_len:]],
+            dtype=np.int64
+        )
+
+        # Compute next-token logits.
+        logits = gpt_forward(
+            context_ids,
+            params,
+            params["num_heads"]
+        )
+
+        # Use logits from the final position.
+        next_logits = last_position_logits(logits)
+
+        # Apply temperature scaling.
+        next_logits = scale_logits_by_temperature(
+            next_logits,
+            temperature
+        )
+
+        # Optionally keep only the top-k logits.
+        if top_k is not None:
+            next_logits = top_k_filter_logits(
+                next_logits,
+                top_k
+            )
+
+        # Sample one next token.
+        next_token = sample_next_token(
+            next_logits,
+            rng
+        )[0]
+
+        # Append it to the running sequence.
+        token_ids.append(int(next_token))
+
+    # Decode the complete sequence back into text.
+    return decode_ids(token_ids, id_to_char)
 
