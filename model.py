@@ -172,8 +172,19 @@ def ffn_first_layer(x, w1, b1):
 def ffn_second_layer(h, w2, b2):
     return linear_projection(h, w2, b2)
 
-# Step 23 - position_wise_feed_forward (not yet solved)
-# TODO: implement
+# Step 23 - position_wise_feed_forward
+def position_wise_feed_forward(x, params):
+    h = ffn_first_layer(
+        x,
+        params["w1"],
+        params["b1"]
+    )
+
+    return ffn_second_layer(
+        h,
+        params["w2"],
+        params["b2"]
+    )
 
 # Step 24 - layernorm_stats (not yet solved)
 # TODO: implement
