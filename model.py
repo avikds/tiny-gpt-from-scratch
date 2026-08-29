@@ -296,8 +296,65 @@ def cross_entropy_language_modeling_loss(logits, targets):
 
     return float(-np.mean(correct_log_probs))
 
-# Step 32 - init_gpt_parameters (not yet solved)
-# TODO: implement
+# Step 32 - init_gpt_parameters
+def init_gpt_parameters(
+    vocab_size,
+    max_seq_len,
+    d_model,
+    num_heads,
+    d_ff,
+    num_layers,
+    seed=0
+):
+    rng = np.random.default_rng(seed)
+
+    def weight(shape):
+        return rng.normal(0.0, 0.02, size=shape)
+
+    params = {
+        "token_embedding": weight((vocab_size, d_model)),
+        "positional_embedding": weight((max_seq_len, d_model)),
+        "blocks": [],
+        "ln_f_gamma": np.ones(d_model),
+        "ln_f_beta": np.zeros(d_model),
+        "w_out": weight((d_model, vocab_size)),
+        "b_out": np.zeros(vocab_size),
+    }
+
+    for _ in range(num_layers):
+        block = {
+            "ln1_gamma": np.ones(d_model),
+            "ln1_beta": np.zeros(d_model),
+
+            "attn": {
+                "w_q": weight((d_model, d_model)),
+                "b_q": np.zeros(d_model),
+
+                "w_k": weight((d_model, d_model)),
+                "b_k": np.zeros(d_model),
+
+                "w_v": weight((d_model, d_model)),
+                "b_v": np.zeros(d_model),
+
+                "w_o": weight((d_model, d_model)),
+                "b_o": np.zeros(d_model),
+            },
+
+            "ln2_gamma": np.ones(d_model),
+            "ln2_beta": np.zeros(d_model),
+
+            "ffn": {
+                "w1": weight((d_model, d_ff)),
+                "b1": np.zeros(d_ff),
+
+                "w2": weight((d_ff, d_model)),
+                "b2": np.zeros(d_model),
+            },
+        }
+
+        params["blocks"].append(block)
+
+    return params
 
 # Step 33 - collect_parameters (not yet solved)
 # TODO: implement
