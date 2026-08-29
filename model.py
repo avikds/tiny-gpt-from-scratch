@@ -50,8 +50,14 @@ def add_positional_embeddings(token_embeds, pos_embedding_table):
     T = token_embeds.shape[1]
     return token_embeds + pos_embedding_table[:T]
 
-# Step 8 - linear_projection (not yet solved)
-# TODO: implement
+# Step 8 - linear_projection
+def linear_projection(x, weight, bias):
+    output = x @ weight
+
+    if bias is not None:
+        output = output + bias
+
+    return output
 
 # Step 9 - compute_attention_scores (not yet solved)
 # TODO: implement

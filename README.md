@@ -17,7 +17,7 @@ python scaffold.py
 - [x] **5.** make_batches
 - [x] **6.** token_embedding_lookup
 - [x] **7.** add_positional_embeddings
-- [ ] **8.** linear_projection
+- [x] **8.** linear_projection
 - [ ] **9.** compute_attention_scores
 - [ ] **10.** scale_attention_scores
 - [ ] **11.** apply_causal_mask
