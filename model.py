@@ -16,8 +16,6 @@ def build_id_to_char(char_to_id):
     return {idx: char for char, idx in char_to_id.items()}
 
 # Step 3 - encode_text
-import numpy as np
-
 def encode_text(text, char_to_id):
     return np.array([char_to_id[char] for char in text], dtype=np.int64)
 
