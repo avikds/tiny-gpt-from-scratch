@@ -277,8 +277,24 @@ def gpt_forward(token_ids, params, num_heads):
 
     return logits
 
-# Step 31 - cross_entropy_language_modeling_loss (not yet solved)
-# TODO: implement
+# Step 31 - cross_entropy_language_modeling_loss
+def cross_entropy_language_modeling_loss(logits, targets):
+    # Numerically stable log-softmax
+    max_logits = np.max(logits, axis=-1, keepdims=True)
+    shifted_logits = logits - max_logits
+
+    log_probs = shifted_logits - np.log(
+        np.sum(np.exp(shifted_logits), axis=-1, keepdims=True)
+    )
+
+    # Select the log-probability of the correct target at each position
+    correct_log_probs = np.take_along_axis(
+        log_probs,
+        targets[..., None],
+        axis=-1
+    ).squeeze(axis=-1)
+
+    return float(-np.mean(correct_log_probs))
 
 # Step 32 - init_gpt_parameters (not yet solved)
 # TODO: implement

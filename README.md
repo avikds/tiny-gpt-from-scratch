@@ -40,7 +40,7 @@ python scaffold.py
 - [x] **28.** gpt_backbone
 - [x] **29.** project_to_vocab_logits
 - [x] **30.** gpt_forward
-- [ ] **31.** cross_entropy_language_modeling_loss
+- [x] **31.** cross_entropy_language_modeling_loss
 - [ ] **32.** init_gpt_parameters
 - [ ] **33.** collect_parameters
 - [ ] **34.** training_step
