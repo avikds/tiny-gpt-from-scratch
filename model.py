@@ -63,8 +63,9 @@ def linear_projection(x, weight, bias):
 def compute_attention_scores(q, k):
     return q @ np.swapaxes(k, -1, -2)
 
-# Step 10 - scale_attention_scores (not yet solved)
-# TODO: implement
+# Step 10 - scale_attention_scores
+def scale_attention_scores(scores, head_dim):
+    return scores / np.sqrt(head_dim)
 
 # Step 11 - apply_causal_mask (not yet solved)
 # TODO: implement
