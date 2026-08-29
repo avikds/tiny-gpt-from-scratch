@@ -74,8 +74,11 @@ def apply_causal_mask(scores):
     
     return np.where(mask, -np.inf, scores)
 
-# Step 12 - softmax_attention_weights (not yet solved)
-# TODO: implement
+# Step 12 - softmax_attention_weights
+def softmax_attention_weights(masked_scores):
+    shifted = masked_scores - np.max(masked_scores, axis=-1, keepdims=True)
+    exp_scores = np.exp(shifted)
+    return exp_scores / np.sum(exp_scores, axis=-1, keepdims=True)
 
 # Step 13 - attention_context (not yet solved)
 # TODO: implement
