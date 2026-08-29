@@ -193,8 +193,12 @@ def layernorm_stats(x, eps=1e-5):
 
     return mean, var
 
-# Step 25 - layer_norm (not yet solved)
-# TODO: implement
+# Step 25 - layer_norm
+def layer_norm(x, gamma, beta, eps=1e-5):
+    mean, var = layernorm_stats(x, eps)
+
+    normalized = (x - mean) / np.sqrt(var + eps)
+    return normalized * gamma + beta
 
 # Step 26 - pre_norm_residual_sublayer (not yet solved)
 # TODO: implement
