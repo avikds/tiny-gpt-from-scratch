@@ -21,8 +21,9 @@ import numpy as np
 def encode_text(text, char_to_id):
     return np.array([char_to_id[char] for char in text], dtype=np.int64)
 
-# Step 4 - decode_ids (not yet solved)
-# TODO: implement
+# Step 4 - decode_ids
+def decode_ids(ids, id_to_char):
+    return ''.join(id_to_char[int(idx)] for idx in ids)
 
 # Step 5 - make_batches (not yet solved)
 # TODO: implement
