@@ -84,8 +84,15 @@ def softmax_attention_weights(masked_scores):
 def attention_context(attn_weights, v):
     return attn_weights @ v
 
-# Step 14 - split_heads (not yet solved)
-# TODO: implement
+# Step 14 - split_heads
+def split_heads(x, num_heads):
+    """Reshape (B, T, d_model) into (B, num_heads, T, head_dim)."""
+
+    B, T, d_model = x.shape
+    head_dim = d_model // num_heads
+
+    x = x.reshape(B, T, num_heads, head_dim)
+    return x.transpose(0, 2, 1, 3)
 
 # Step 15 - merge_heads (not yet solved)
 # TODO: implement

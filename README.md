@@ -23,7 +23,7 @@ python scaffold.py
 - [x] **11.** apply_causal_mask
 - [x] **12.** softmax_attention_weights
 - [x] **13.** attention_context
-- [ ] **14.** split_heads
+- [x] **14.** split_heads
 - [ ] **15.** merge_heads
 - [ ] **16.** project_qkv
 - [ ] **17.** multi_head_scaled_dot_product_attention
