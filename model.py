@@ -402,21 +402,12 @@ def collect_parameters(params):
     return parameters
 
 # Step 34 - training_step
+import numpy as np
+
 def training_step(params, input_ids, target_ids):
-    """Compute loss and a gradient dict mirroring params using finite differences."""
+    """Compute loss and a gradient dict mirroring the parameter structure."""
 
     eps = 1e-5
-
-    # Compute the loss at the current parameter values
-    logits = gpt_forward(
-        input_ids,
-        params,
-        params["num_heads"]
-    )
-    loss = cross_entropy_language_modeling_loss(
-        logits,
-        target_ids
-    )
 
     def compute_loss():
         logits = gpt_forward(
@@ -429,21 +420,27 @@ def training_step(params, input_ids, target_ids):
             target_ids
         )
 
-    def finite_difference_gradient(array):
-        grad = np.zeros_like(array)
+    # Loss at the original parameter values.
+    loss = float(compute_loss())
 
-        for index in np.ndindex(array.shape):
-            original_value = array[index]
+    def finite_difference_gradient(arr):
+        grad = np.empty(arr.shape, dtype=np.float64)
 
-            array[index] = original_value + eps
+        for idx in np.ndindex(arr.shape):
+            original = arr[idx]
+
+            # theta + eps
+            arr[idx] = original + eps
             loss_plus = compute_loss()
 
-            array[index] = original_value - eps
+            # theta - eps
+            arr[idx] = original - eps
             loss_minus = compute_loss()
 
-            array[index] = original_value
+            # Restore the parameter exactly.
+            arr[idx] = original
 
-            grad[index] = (loss_plus - loss_minus) / (2.0 * eps)
+            grad[idx] = (loss_plus - loss_minus) / (2.0 * eps)
 
         return grad
 
@@ -452,11 +449,19 @@ def training_step(params, input_ids, target_ids):
             return finite_difference_gradient(obj)
 
         if isinstance(obj, dict):
-            return {
-                key: build_grads(value)
-                for key, value in obj.items()
-                if isinstance(value, np.ndarray) or isinstance(value, dict)
-            }
+            grads = {}
+
+            for key, value in obj.items():
+                if isinstance(value, np.ndarray):
+                    grads[key] = finite_difference_gradient(value)
+
+                elif isinstance(value, dict):
+                    grads[key] = build_grads(value)
+
+                elif isinstance(value, list):
+                    grads[key] = build_grads(value)
+
+            return grads
 
         if isinstance(obj, list):
             return [build_grads(value) for value in obj]
