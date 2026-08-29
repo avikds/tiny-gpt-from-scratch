@@ -635,8 +635,25 @@ def last_position_logits(logits):
 def scale_logits_by_temperature(logits, temperature):
     return logits / temperature
 
-# Step 39 - top_k_filter_logits (not yet solved)
-# TODO: implement
+# Step 39 - top_k_filter_logits
+def top_k_filter_logits(logits, k):
+    """Keep only the k largest logits in each row and set the rest to -inf."""
+
+    if k >= logits.shape[-1]:
+        return logits
+
+    # Find the k-th largest value in each row.
+    kth_values = np.partition(
+        logits,
+        -k,
+        axis=-1
+    )[:, -k, None]
+
+    # Keep values greater than or equal to the k-th largest value.
+    mask = logits >= kth_values
+
+    # Return a new array with all other logits replaced by -inf.
+    return np.where(mask, logits, -np.inf)
 
 # Step 40 - sample_next_token (not yet solved)
 # TODO: implement

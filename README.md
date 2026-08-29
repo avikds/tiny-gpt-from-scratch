@@ -48,7 +48,7 @@ python scaffold.py
 - [x] **36.** run_training_loop
 - [x] **37.** last_position_logits
 - [x] **38.** scale_logits_by_temperature
-- [ ] **39.** top_k_filter_logits
+- [x] **39.** top_k_filter_logits
 - [ ] **40.** sample_next_token
 - [ ] **41.** generate_text
 
