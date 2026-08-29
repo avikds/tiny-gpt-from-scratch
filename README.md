@@ -12,7 +12,7 @@ python scaffold.py
 
 - [x] **1.** build_char_vocab
 - [x] **2.** build_id_to_char
-- [ ] **3.** encode_text
+- [x] **3.** encode_text
 - [ ] **4.** decode_ids
 - [ ] **5.** make_batches
 - [ ] **6.** token_embedding_lookup

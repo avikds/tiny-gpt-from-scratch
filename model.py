@@ -15,8 +15,11 @@ def build_char_vocab(text):
 def build_id_to_char(char_to_id):
     return {idx: char for char, idx in char_to_id.items()}
 
-# Step 3 - encode_text (not yet solved)
-# TODO: implement
+# Step 3 - encode_text
+import numpy as np
+
+def encode_text(text, char_to_id):
+    return np.array([char_to_id[char] for char in text], dtype=np.int64)
 
 # Step 4 - decode_ids (not yet solved)
 # TODO: implement
