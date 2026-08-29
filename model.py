@@ -236,8 +236,9 @@ def gpt_backbone(x, blocks_params, num_heads):
 
     return x
 
-# Step 29 - project_to_vocab_logits (not yet solved)
-# TODO: implement
+# Step 29 - project_to_vocab_logits
+def project_to_vocab_logits(hidden_states, w_out, b_out):
+    return linear_projection(hidden_states, w_out, b_out)
 
 # Step 30 - gpt_forward (not yet solved)
 # TODO: implement
