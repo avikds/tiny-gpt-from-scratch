@@ -356,8 +356,44 @@ def init_gpt_parameters(
 
     return params
 
-# Step 33 - collect_parameters (not yet solved)
-# TODO: implement
+# Step 33 - collect_parameters
+def collect_parameters(params):
+    parameters = [
+        params["token_embedding"],
+        params["positional_embedding"],
+    ]
+
+    for block in params["blocks"]:
+        parameters.extend([
+            block["ln1_gamma"],
+            block["ln1_beta"],
+
+            block["attn"]["w_q"],
+            block["attn"]["b_q"],
+            block["attn"]["w_k"],
+            block["attn"]["b_k"],
+            block["attn"]["w_v"],
+            block["attn"]["b_v"],
+            block["attn"]["w_o"],
+            block["attn"]["b_o"],
+
+            block["ln2_gamma"],
+            block["ln2_beta"],
+
+            block["ffn"]["w1"],
+            block["ffn"]["b1"],
+            block["ffn"]["w2"],
+            block["ffn"]["b2"],
+        ])
+
+    parameters.extend([
+        params["ln_f_gamma"],
+        params["ln_f_beta"],
+        params["w_out"],
+        params["b_out"],
+    ])
+
+    return parameters
 
 # Step 34 - training_step (not yet solved)
 # TODO: implement
