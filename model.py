@@ -67,8 +67,12 @@ def compute_attention_scores(q, k):
 def scale_attention_scores(scores, head_dim):
     return scores / np.sqrt(head_dim)
 
-# Step 11 - apply_causal_mask (not yet solved)
-# TODO: implement
+# Step 11 - apply_causal_mask
+def apply_causal_mask(scores):
+    T = scores.shape[-1]
+    mask = np.triu(np.ones((T, T), dtype=bool), k=1)
+    
+    return np.where(mask, -np.inf, scores)
 
 # Step 12 - softmax_attention_weights (not yet solved)
 # TODO: implement
