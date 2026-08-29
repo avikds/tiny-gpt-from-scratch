@@ -600,8 +600,32 @@ def apply_optimizer_update(params, grads, learning_rate):
 
     return params
 
-# Step 36 - run_training_loop (not yet solved)
-# TODO: implement
+# Step 36 - run_training_loop
+def run_training_loop(params, batches, num_steps, learning_rate):
+    losses = []
+
+    for step in range(num_steps):
+        # Cycle through batches when num_steps exceeds len(batches)
+        input_ids, target_ids = batches[step % len(batches)]
+
+        # Compute loss and gradients
+        loss, grads = training_step(
+            params,
+            input_ids,
+            target_ids
+        )
+
+        # Update parameters in place
+        apply_optimizer_update(
+            params,
+            grads,
+            learning_rate
+        )
+
+        # Record the loss for this step
+        losses.append(loss)
+
+    return losses
 
 # Step 37 - last_position_logits (not yet solved)
 # TODO: implement

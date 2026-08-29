@@ -45,7 +45,7 @@ python scaffold.py
 - [x] **33.** collect_parameters
 - [x] **34.** training_step
 - [x] **35.** apply_optimizer_update
-- [ ] **36.** run_training_loop
+- [x] **36.** run_training_loop
 - [ ] **37.** last_position_logits
 - [ ] **38.** scale_logits_by_temperature
 - [ ] **39.** top_k_filter_logits
