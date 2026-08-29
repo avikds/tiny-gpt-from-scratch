@@ -26,7 +26,7 @@ python scaffold.py
 - [x] **14.** split_heads
 - [x] **15.** merge_heads
 - [x] **16.** project_qkv
-- [ ] **17.** multi_head_scaled_dot_product_attention
+- [x] **17.** multi_head_scaled_dot_product_attention
 - [ ] **18.** merge_and_output_project
 - [ ] **19.** masked_multi_head_self_attention
 - [ ] **20.** gelu_activation
