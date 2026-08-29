@@ -655,8 +655,38 @@ def top_k_filter_logits(logits, k):
     # Return a new array with all other logits replaced by -inf.
     return np.where(mask, logits, -np.inf)
 
-# Step 40 - sample_next_token (not yet solved)
-# TODO: implement
+# Step 40 - sample_next_token
+def sample_next_token(filtered_logits, rng):
+    """Sample one token id per batch row from filtered logits."""
+
+    # Numerically stable softmax.
+    max_logits = np.max(
+        filtered_logits,
+        axis=-1,
+        keepdims=True
+    )
+
+    shifted = filtered_logits - max_logits
+    exp_logits = np.exp(shifted)
+
+    # -inf entries become zero probability.
+    probabilities = exp_logits / np.sum(
+        exp_logits,
+        axis=-1,
+        keepdims=True
+    )
+
+    # Sample one token independently for each batch row.
+    batch_size = filtered_logits.shape[0]
+    samples = np.empty(batch_size, dtype=np.int64)
+
+    for i in range(batch_size):
+        samples[i] = rng.choice(
+            filtered_logits.shape[-1],
+            p=probabilities[i]
+        )
+
+    return samples
 
 # Step 41 - generate_text (not yet solved)
 # TODO: implement
