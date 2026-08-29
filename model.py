@@ -402,8 +402,6 @@ def collect_parameters(params):
     return parameters
 
 # Step 34 - training_step
-import numpy as np
-
 def training_step(params, input_ids, target_ids):
     """Compute loss and a gradient dict mirroring params using finite differences."""
 
