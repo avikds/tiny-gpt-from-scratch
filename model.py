@@ -248,10 +248,16 @@ def gpt_forward(token_ids, params, num_heads):
         params["token_embedding"]
     )
 
-    # Add positional embeddings
+    # Add positional embeddings.
+    # Support both parameter names used across the project scaffold.
+    if "pos_embedding" in params:
+        pos_embedding = params["pos_embedding"]
+    else:
+        pos_embedding = params["positional_embedding"]
+
     x = add_positional_embeddings(
         x,
-        params["pos_embedding"]
+        pos_embedding
     )
 
     # Transformer backbone
@@ -268,7 +274,7 @@ def gpt_forward(token_ids, params, num_heads):
         params["ln_f_beta"]
     )
 
-    # Language-model output head
+    # Project hidden states to vocabulary logits
     logits = project_to_vocab_logits(
         x,
         params["w_out"],
@@ -400,51 +406,64 @@ def training_step(params, input_ids, target_ids):
     """Compute loss and a gradient dict mirroring params using finite differences."""
 
     eps = 1e-5
-    num_heads = params["num_heads"]
+
+    # Compute the loss at the current parameter values
+    logits = gpt_forward(
+        input_ids,
+        params,
+        params["num_heads"]
+    )
+    loss = cross_entropy_language_modeling_loss(
+        logits,
+        target_ids
+    )
 
     def compute_loss():
-        logits = gpt_forward(input_ids, params, num_heads)
-        return cross_entropy_language_modeling_loss(logits, target_ids)
+        logits = gpt_forward(
+            input_ids,
+            params,
+            params["num_heads"]
+        )
+        return cross_entropy_language_modeling_loss(
+            logits,
+            target_ids
+        )
 
-    # Compute the original loss
-    loss = compute_loss()
+    def finite_difference_gradient(array):
+        grad = np.zeros_like(array)
 
-    def compute_grads(obj):
+        for index in np.ndindex(array.shape):
+            original_value = array[index]
+
+            array[index] = original_value + eps
+            loss_plus = compute_loss()
+
+            array[index] = original_value - eps
+            loss_minus = compute_loss()
+
+            array[index] = original_value
+
+            grad[index] = (loss_plus - loss_minus) / (2.0 * eps)
+
+        return grad
+
+    def build_grads(obj):
         if isinstance(obj, np.ndarray):
-            grad = np.zeros_like(obj)
+            return finite_difference_gradient(obj)
 
-            for idx in np.ndindex(obj.shape):
-                original_value = obj[idx]
-
-                # f(x + eps)
-                obj[idx] = original_value + eps
-                loss_plus = compute_loss()
-
-                # f(x - eps)
-                obj[idx] = original_value - eps
-                loss_minus = compute_loss()
-
-                # Restore the original parameter value
-                obj[idx] = original_value
-
-                # Centered finite-difference approximation
-                grad[idx] = (loss_plus - loss_minus) / (2 * eps)
-
-            return grad
-
-        elif isinstance(obj, dict):
+        if isinstance(obj, dict):
             return {
-                key: compute_grads(value)
+                key: build_grads(value)
                 for key, value in obj.items()
-                if isinstance(value, (dict, list, np.ndarray))
+                if isinstance(value, np.ndarray) or isinstance(value, dict)
             }
 
-        elif isinstance(obj, list):
-            return [compute_grads(value) for value in obj]
+        if isinstance(obj, list):
+            return [build_grads(value) for value in obj]
 
         return None
 
-    grads = compute_grads(params)
+    grads = build_grads(params)
 
     return loss, grads
 
