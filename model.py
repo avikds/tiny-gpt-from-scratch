@@ -395,8 +395,58 @@ def collect_parameters(params):
 
     return parameters
 
-# Step 34 - training_step (not yet solved)
-# TODO: implement
+# Step 34 - training_step
+def training_step(params, input_ids, target_ids):
+    """Compute loss and a gradient dict mirroring params using finite differences."""
+
+    eps = 1e-5
+    num_heads = params["num_heads"]
+
+    def compute_loss():
+        logits = gpt_forward(input_ids, params, num_heads)
+        return cross_entropy_language_modeling_loss(logits, target_ids)
+
+    # Compute the original loss
+    loss = compute_loss()
+
+    def compute_grads(obj):
+        if isinstance(obj, np.ndarray):
+            grad = np.zeros_like(obj)
+
+            for idx in np.ndindex(obj.shape):
+                original_value = obj[idx]
+
+                # f(x + eps)
+                obj[idx] = original_value + eps
+                loss_plus = compute_loss()
+
+                # f(x - eps)
+                obj[idx] = original_value - eps
+                loss_minus = compute_loss()
+
+                # Restore the original parameter value
+                obj[idx] = original_value
+
+                # Centered finite-difference approximation
+                grad[idx] = (loss_plus - loss_minus) / (2 * eps)
+
+            return grad
+
+        elif isinstance(obj, dict):
+            return {
+                key: compute_grads(value)
+                for key, value in obj.items()
+                if isinstance(value, (dict, list, np.ndarray))
+            }
+
+        elif isinstance(obj, list):
+            return [compute_grads(value) for value in obj]
+
+        return None
+
+    grads = compute_grads(params)
+
+    return loss, grads
 
 # Step 35 - apply_optimizer_update (not yet solved)
 # TODO: implement

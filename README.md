@@ -43,7 +43,7 @@ python scaffold.py
 - [x] **31.** cross_entropy_language_modeling_loss
 - [x] **32.** init_gpt_parameters
 - [x] **33.** collect_parameters
-- [ ] **34.** training_step
+- [x] **34.** training_step
 - [ ] **35.** apply_optimizer_update
 - [ ] **36.** run_training_loop
 - [ ] **37.** last_position_logits
