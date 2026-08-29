@@ -229,8 +229,12 @@ def transformer_block(x, params, num_heads):
 
     return x
 
-# Step 28 - gpt_backbone (not yet solved)
-# TODO: implement
+# Step 28 - gpt_backbone
+def gpt_backbone(x, blocks_params, num_heads):
+    for block_params in blocks_params:
+        x = transformer_block(x, block_params, num_heads)
+
+    return x
 
 # Step 29 - project_to_vocab_logits (not yet solved)
 # TODO: implement
