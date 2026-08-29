@@ -573,8 +573,6 @@ def training_step(params, input_ids, target_ids):
     return loss, grads
 
 # Step 35 - apply_optimizer_update
-import numpy as np
-
 def apply_optimizer_update(params, grads, learning_rate):
     # Recursively walk through the parameter structure.
     if isinstance(params, np.ndarray):
