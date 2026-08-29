@@ -186,8 +186,12 @@ def position_wise_feed_forward(x, params):
         params["b2"]
     )
 
-# Step 24 - layernorm_stats (not yet solved)
-# TODO: implement
+# Step 24 - layernorm_stats
+def layernorm_stats(x, eps=1e-5):
+    mean = np.mean(x, axis=-1, keepdims=True)
+    var = np.var(x, axis=-1, keepdims=True)
+
+    return mean, var
 
 # Step 25 - layer_norm (not yet solved)
 # TODO: implement

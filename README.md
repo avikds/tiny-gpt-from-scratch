@@ -33,7 +33,7 @@ python scaffold.py
 - [x] **21.** ffn_first_layer
 - [x] **22.** ffn_second_layer
 - [x] **23.** position_wise_feed_forward
-- [ ] **24.** layernorm_stats
+- [x] **24.** layernorm_stats
 - [ ] **25.** layer_norm
 - [ ] **26.** pre_norm_residual_sublayer
 - [ ] **27.** transformer_block
