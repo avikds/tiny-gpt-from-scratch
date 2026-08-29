@@ -11,8 +11,9 @@ def build_char_vocab(text):
     # Get unique characters, sort them, and assign IDs starting from 0
     return {char: idx for idx, char in enumerate(sorted(set(text)))}
 
-# Step 2 - build_id_to_char (not yet solved)
-# TODO: implement
+# Step 2 - build_id_to_char
+def build_id_to_char(char_to_id):
+    return {idx: char for char, idx in char_to_id.items()}
 
 # Step 3 - encode_text (not yet solved)
 # TODO: implement

@@ -11,7 +11,7 @@ python scaffold.py
 ## Steps
 
 - [x] **1.** build_char_vocab
-- [ ] **2.** build_id_to_char
+- [x] **2.** build_id_to_char
 - [ ] **3.** encode_text
 - [ ] **4.** decode_ids
 - [ ] **5.** make_batches
