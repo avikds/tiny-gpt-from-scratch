@@ -45,8 +45,10 @@ def make_batches(data, batch_size, block_size, rng):
 def token_embedding_lookup(token_ids, embedding_table):
     return embedding_table[token_ids]
 
-# Step 7 - add_positional_embeddings (not yet solved)
-# TODO: implement
+# Step 7 - add_positional_embeddings
+def add_positional_embeddings(token_embeds, pos_embedding_table):
+    T = token_embeds.shape[1]
+    return token_embeds + pos_embedding_table[:T]
 
 # Step 8 - linear_projection (not yet solved)
 # TODO: implement
