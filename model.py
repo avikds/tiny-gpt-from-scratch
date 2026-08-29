@@ -163,8 +163,10 @@ def gelu_activation(x):
         )
     )
 
-# Step 21 - ffn_first_layer (not yet solved)
-# TODO: implement
+# Step 21 - ffn_first_layer
+def ffn_first_layer(x, w1, b1):
+    hidden = linear_projection(x, w1, b1)
+    return gelu_activation(hidden)
 
 # Step 22 - ffn_second_layer (not yet solved)
 # TODO: implement

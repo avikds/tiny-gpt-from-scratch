@@ -30,7 +30,7 @@ python scaffold.py
 - [x] **18.** merge_and_output_project
 - [x] **19.** masked_multi_head_self_attention
 - [x] **20.** gelu_activation
-- [ ] **21.** ffn_first_layer
+- [x] **21.** ffn_first_layer
 - [ ] **22.** ffn_second_layer
 - [ ] **23.** position_wise_feed_forward
 - [ ] **24.** layernorm_stats
