@@ -52,16 +52,6 @@ python scaffold.py
 - [x] **40.** sample_next_token
 - [x] **41.** generate_text
 
-## Results
+---
 
-```
-vocab_size=29, corpus_tokens=1200
-sample decode: 'hello world. this is a tiny gp'
-num parameter arrays: 38
-batch shapes: inputs=(4, 16), targets=(4, 16)
-logits shape: (4, 16, 29)
-initial loss: 3.3686
-loss history (first/last): 3.3702 -> 3.3342
-prompt: 'the '
-generated: 'the xq  xyqqpzs x u xcbc  ugqgqtqqtj udcpzqp'
-```
+Built on Deep-ML.
