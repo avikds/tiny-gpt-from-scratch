@@ -392,8 +392,10 @@ def logits_to_probs_rowwise(logits):
     # Convert a (B, V) logits matrix into a row-wise probability matrix.
     return stable_softmax_2d_rowwise(logits)
 
-# Step 64 - gather_correct_token_probs (not yet solved)
-# TODO: implement
+# Step 64 - gather_correct_token_probs
+def gather_correct_token_probs(probs, targets):
+    """Return probs[i, targets[i]] for each i, shape (B,)."""
+    return probs[np.arange(len(targets)), targets]
 
 # Step 65 - cross_entropy_loss (not yet solved)
 # TODO: implement
