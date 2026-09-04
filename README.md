@@ -71,7 +71,7 @@ python scaffold.py
 - [x] **59.** one_hot_encode_batch
 - [x] **60.** forward_logits_onehot
 - [x] **61.** observe_lookup_equivalence
-- [ ] **62.** forward_logits_lookup
+- [x] **62.** forward_logits_lookup
 - [ ] **63.** logits_to_probs_rowwise
 - [ ] **64.** gather_correct_token_probs
 - [ ] **65.** cross_entropy_loss
