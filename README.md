@@ -60,7 +60,7 @@ python scaffold.py
 - [x] **48.** add_one_smoothing
 - [x] **49.** row_sums_of_counts
 - [x] **50.** normalize_counts_to_probs
-- [ ] **51.** sample_next_token
+- [x] **51.** sample_next_token
 - [ ] **52.** generate_sequence
 - [ ] **53.** decode_generated_sequence
 - [ ] **54.** log_prob_of_pair
