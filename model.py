@@ -979,8 +979,11 @@ def create_multihead_output_projection(d_model, scale=0.02):
     random_values = make_2d_random(d_model, d_model, seed=0)
     return scale_w_small(random_values, scale)
 
-# Step 119 - reshape_to_heads (not yet solved)
-# TODO: implement
+# Step 119 - reshape_to_heads
+def reshape_to_heads(x, n_heads, d_head):
+    """Reshape (B, T, d_model) into (B, T, n_heads, d_head)."""
+    B, T, _ = x.shape
+    return x.reshape(B, T, n_heads, d_head)
 
 # Step 120 - transpose_heads_to_front (not yet solved)
 # TODO: implement
