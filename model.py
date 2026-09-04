@@ -833,8 +833,15 @@ def softmax_attention_weights(masked_scores):
     sums = np.sum(exp_scores, axis=-1, keepdims=True)
     return exp_scores / sums
 
-# Step 108 - attention_weighted_values (not yet solved)
-# TODO: implement
+# Step 108 - attention_weighted_values
+def attention_weighted_values(attn, v):
+    """Combine attention weights with values: out = attn @ V.
+
+    attn: (B, T, T) softmaxed attention weights
+    v:    (B, T, d_head) value vectors
+    returns: (B, T, d_head)
+    """
+    return np.matmul(attn, v)
 
 # Step 109 - apply_output_projection (not yet solved)
 # TODO: implement
