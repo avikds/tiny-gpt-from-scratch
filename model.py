@@ -843,8 +843,10 @@ def attention_weighted_values(attn, v):
     """
     return np.matmul(attn, v)
 
-# Step 109 - apply_output_projection (not yet solved)
-# TODO: implement
+# Step 109 - apply_output_projection
+def apply_output_projection(attn_out, w_o):
+    """Project attention output (B,T,d_head) through Wo (d_head,d_model)."""
+    return np.matmul(attn_out, w_o)
 
 # Step 110 - output_projection_backward (not yet solved)
 # TODO: implement
