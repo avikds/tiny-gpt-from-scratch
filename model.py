@@ -1409,8 +1409,6 @@ def transformer_block_backward(d_y, cache, block_params):
     return d_x, grads
 
 # Step 140 - stack_transformer_blocks
-import numpy as np
-
 def stack_transformer_blocks(n_layers, d_model, n_heads, d_ff):
     """Build a list of n_layers Transformer block parameter dicts.
 
