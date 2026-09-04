@@ -166,7 +166,7 @@ python scaffold.py
 - [x] **154.** wire_full_training_loop
 - [x] **155.** logging_and_validation_loss
 - [x] **156.** encode_prompt
-- [ ] **157.** crop_context_to_block_size
+- [x] **157.** crop_context_to_block_size
 - [ ] **158.** forward_to_get_logits
 - [ ] **159.** take_last_position_logits
 - [ ] **160.** apply_temperature
