@@ -20,7 +20,7 @@ python scaffold.py
 - [x] **8.** make_1d_array
 - [x] **9.** get_array_shape
 - [x] **10.** get_array_dtype
-- [ ] **11.** make_2d_zeros
+- [x] **11.** make_2d_zeros
 - [ ] **12.** make_2d_random
 - [ ] **13.** index_element
 - [ ] **14.** slice_row
