@@ -84,8 +84,10 @@ def slice_column(arr, j):
     """Return column j of a 2D array as a 1D array of length R."""
     return arr[:, j]
 
-# Step 16 - slice_subblock (not yet solved)
-# TODO: implement
+# Step 16 - slice_subblock
+def slice_subblock(arr, r0, r1, c0, c1):
+    """Return the sub-block arr[r0:r1, c0:c1] of a 2D array."""
+    return arr[r0:r1, c0:c1]
 
 # Step 17 - elementwise_add (not yet solved)
 # TODO: implement

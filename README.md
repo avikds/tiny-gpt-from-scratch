@@ -25,7 +25,7 @@ python scaffold.py
 - [x] **13.** index_element
 - [x] **14.** slice_row
 - [x] **15.** slice_column
-- [ ] **16.** slice_subblock
+- [x] **16.** slice_subblock
 - [ ] **17.** elementwise_add
 - [ ] **18.** elementwise_multiply
 - [ ] **19.** scalar_broadcast_add
