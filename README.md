@@ -142,7 +142,7 @@ python scaffold.py
 - [x] **130.** multihead_reshape_transpose_backward
 - [x] **131.** ffn_linear_one_forward
 - [x] **132.** ffn_activation_forward
-- [ ] **133.** ffn_linear_two_forward
+- [x] **133.** ffn_linear_two_forward
 - [ ] **134.** ffn_backward
 - [ ] **135.** residual_forward
 - [ ] **136.** residual_backward
