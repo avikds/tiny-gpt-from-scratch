@@ -137,7 +137,7 @@ python scaffold.py
 - [x] **125.** multihead_weighted_sum
 - [x] **126.** transpose_heads_to_back
 - [x] **127.** get_multihead_output_sequence_length
-- [ ] **128.** merge_heads_to_d_model
+- [x] **128.** merge_heads_to_d_model
 - [ ] **129.** multihead_output_projection_forward
 - [ ] **130.** multihead_reshape_transpose_backward
 - [ ] **131.** ffn_linear_one_forward

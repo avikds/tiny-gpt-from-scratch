@@ -1043,8 +1043,11 @@ def get_multihead_output_sequence_length(x_heads_back):
     """Return T from a (B, T, n_heads, d_head) tensor."""
     return int(x_heads_back.shape[1])
 
-# Step 128 - merge_heads_to_d_model (not yet solved)
-# TODO: implement
+# Step 128 - merge_heads_to_d_model
+def merge_heads_to_d_model(x_heads_back):
+    """Reshape (B, T, n_heads, d_head) into (B, T, d_model)."""
+    B, T, n_heads, d_head = x_heads_back.shape
+    return x_heads_back.reshape(B, T, n_heads * d_head)
 
 # Step 129 - multihead_output_projection_forward (not yet solved)
 # TODO: implement
