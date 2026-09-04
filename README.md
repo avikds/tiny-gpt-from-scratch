@@ -101,7 +101,7 @@ python scaffold.py
 - [x] **89.** layernorm_backward_divide_std
 - [x] **90.** layernorm_backward_full
 - [x] **91.** layernorm_backward_implementation
-- [ ] **92.** create_token_embedding
+- [x] **92.** create_token_embedding
 - [ ] **93.** token_embedding_forward
 - [ ] **94.** token_embedding_backward
 - [ ] **95.** create_positional_embedding

@@ -712,8 +712,10 @@ def layernorm_backward_implementation(d_out, cache):
     # Reuse the complete LayerNorm backward implementation.
     return layernorm_backward_full(d_out, cache)
 
-# Step 92 - create_token_embedding (not yet solved)
-# TODO: implement
+# Step 92 - create_token_embedding
+def create_token_embedding(vocab_size, d_model, scale=0.02):
+    """Initialize the token embedding matrix E of shape (vocab_size, d_model)."""
+    return np.random.randn(vocab_size, d_model) * scale
 
 # Step 93 - token_embedding_forward (not yet solved)
 # TODO: implement
