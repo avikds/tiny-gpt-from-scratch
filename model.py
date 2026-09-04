@@ -89,8 +89,10 @@ def slice_subblock(arr, r0, r1, c0, c1):
     """Return the sub-block arr[r0:r1, c0:c1] of a 2D array."""
     return arr[r0:r1, c0:c1]
 
-# Step 17 - elementwise_add (not yet solved)
-# TODO: implement
+# Step 17 - elementwise_add
+def elementwise_add(a, b):
+    """Return the elementwise sum of two same-shape arrays."""
+    return a + b
 
 # Step 18 - elementwise_multiply (not yet solved)
 # TODO: implement
