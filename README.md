@@ -69,7 +69,7 @@ python scaffold.py
 - [x] **57.** initialize_w_random
 - [x] **58.** scale_w_small
 - [x] **59.** one_hot_encode_batch
-- [ ] **60.** forward_logits_onehot
+- [x] **60.** forward_logits_onehot
 - [ ] **61.** observe_lookup_equivalence
 - [ ] **62.** forward_logits_lookup
 - [ ] **63.** logits_to_probs_rowwise
