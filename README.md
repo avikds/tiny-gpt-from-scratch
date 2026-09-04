@@ -127,7 +127,7 @@ python scaffold.py
 - [x] **115.** qkv_projection_backward
 - [x] **116.** choose_attention_head_config
 - [x] **117.** create_multihead_qkv_projections
-- [ ] **118.** create_multihead_output_projection
+- [x] **118.** create_multihead_output_projection
 - [ ] **119.** reshape_to_heads
 - [ ] **120.** transpose_heads_to_front
 - [ ] **121.** get_multihead_n_heads
