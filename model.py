@@ -48,8 +48,10 @@ def make_1d_array(values):
     """Create a 1D NumPy array from a Python list of numbers."""
     return np.array(values)
 
-# Step 9 - get_array_shape (not yet solved)
-# TODO: implement
+# Step 9 - get_array_shape
+def get_array_shape(arr):
+    """Return the shape tuple of a NumPy array."""
+    return arr.shape
 
 # Step 10 - get_array_dtype (not yet solved)
 # TODO: implement
