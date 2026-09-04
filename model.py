@@ -1953,8 +1953,10 @@ def take_last_position_logits(logits):
     """Return logits at the final time step with shape (1, vocab_size)."""
     return logits[:, -1, :]
 
-# Step 160 - apply_temperature (not yet solved)
-# TODO: implement
+# Step 160 - apply_temperature
+def apply_temperature(logits, temperature):
+    """Scale logits by 1/temperature before softmax sampling."""
+    return logits / temperature
 
 # Step 161 - top_k_filter (not yet solved)
 # TODO: implement
