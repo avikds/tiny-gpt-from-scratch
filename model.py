@@ -286,8 +286,10 @@ def vectorize_counts_add_at(vocab_size, data):
     np.add.at(n_matrix, (data[:-1], data[1:]), 1)
     return n_matrix
 
-# Step 48 - add_one_smoothing (not yet solved)
-# TODO: implement
+# Step 48 - add_one_smoothing
+def add_one_smoothing(n_matrix):
+    """Return n_matrix with every entry incremented by 1 (Laplace smoothing)."""
+    return n_matrix + 1
 
 # Step 49 - row_sums_of_counts (not yet solved)
 # TODO: implement
