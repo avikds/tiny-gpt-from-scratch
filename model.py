@@ -41,8 +41,12 @@ def decode_ids(ids, itos):
     """Decode a list of token ids into a string using itos."""
     return ''.join(decode_int(token_id, itos) for token_id in ids)
 
-# Step 8 - make_1d_array (not yet solved)
-# TODO: implement
+# Step 8 - make_1d_array
+import numpy as np
+
+def make_1d_array(values):
+    """Create a 1D NumPy array from a Python list of numbers."""
+    return np.array(values)
 
 # Step 9 - get_array_shape (not yet solved)
 # TODO: implement
