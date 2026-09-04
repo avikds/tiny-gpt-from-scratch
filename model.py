@@ -670,8 +670,42 @@ def layernorm_backward_divide_std(dy, cache):
     eps = cache['eps']
     return dy / np.sqrt(var + eps)
 
-# Step 90 - layernorm_backward_full (not yet solved)
-# TODO: implement
+# Step 90 - layernorm_backward_full
+def layernorm_backward_full(dy, cache):
+    """Full LayerNorm backward. Return {'dx', 'dgamma', 'dbeta'}."""
+    x = cache['x']
+    x_hat = cache['x_hat']
+    var = cache['var']
+    gamma = cache['gamma']
+    eps = cache['eps']
+
+    D = x.shape[-1]
+
+    # Gradients through the affine transformation:
+    # y = x_hat * gamma + beta
+    dgamma = np.sum(dy * x_hat, axis=0)
+    dbeta = np.sum(dy, axis=0)
+
+    # Upstream gradient with respect to x_hat
+    dx_hat = dy * gamma
+
+    # Complete LayerNorm input gradient
+    inv_std = 1.0 / np.sqrt(var + eps)
+
+    sum_dx_hat = sum_keepdims(dx_hat, axis=-1)
+    sum_dx_hat_xhat = sum_keepdims(dx_hat * x_hat, axis=-1)
+
+    dx = (inv_std / D) * (
+        D * dx_hat
+        - sum_dx_hat
+        - x_hat * sum_dx_hat_xhat
+    )
+
+    return {
+        'dx': dx,
+        'dgamma': dgamma,
+        'dbeta': dbeta
+    }
 
 # Step 91 - layernorm_backward_implementation (not yet solved)
 # TODO: implement
