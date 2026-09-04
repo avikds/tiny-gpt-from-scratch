@@ -19,7 +19,7 @@ python scaffold.py
 - [x] **7.** decode_ids
 - [x] **8.** make_1d_array
 - [x] **9.** get_array_shape
-- [ ] **10.** get_array_dtype
+- [x] **10.** get_array_dtype
 - [ ] **11.** make_2d_zeros
 - [ ] **12.** make_2d_random
 - [ ] **13.** index_element
