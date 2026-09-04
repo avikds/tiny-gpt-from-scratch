@@ -93,7 +93,7 @@ python scaffold.py
 - [x] **81.** relu_forward
 - [x] **82.** relu_backward
 - [x] **83.** softmax_cross_entropy_backward
-- [ ] **84.** layernorm_forward_mean
+- [x] **84.** layernorm_forward_mean
 - [ ] **85.** layernorm_forward_variance
 - [ ] **86.** layernorm_forward_normalize
 - [ ] **87.** layernorm_forward_affine
