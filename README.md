@@ -15,7 +15,7 @@ python scaffold.py
 - [x] **3.** build_itos
 - [x] **4.** encode_char
 - [x] **5.** encode_string
-- [ ] **6.** decode_int
+- [x] **6.** decode_int
 - [ ] **7.** decode_ids
 - [ ] **8.** make_1d_array
 - [ ] **9.** get_array_shape
