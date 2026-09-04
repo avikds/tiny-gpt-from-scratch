@@ -84,7 +84,7 @@ python scaffold.py
 - [x] **72.** train_neural_bigram_loop
 - [x] **73.** sample_from_neural_bigram
 - [x] **74.** linear_forward
-- [ ] **75.** derive_dx_on_paper
+- [x] **75.** derive_dx_on_paper
 - [ ] **76.** derive_linear_dw_on_paper
 - [ ] **77.** linear_backward_dx
 - [ ] **78.** linear_backward_dw
