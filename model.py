@@ -1334,8 +1334,79 @@ def transformer_block_forward(x, block_params):
         }
     }
 
-# Step 139 - transformer_block_backward (not yet solved)
-# TODO: implement
+# Step 139 - transformer_block_backward
+def transformer_block_backward(d_y, cache, block_params):
+    """Backward pass for a pre-LN Transformer block.
+
+    Args:
+        d_y: upstream gradient w.r.t. block output, shape (B, T, D).
+        cache: dict from transformer_block_forward, with keys 'attn_branch' and 'ffn_branch'.
+        block_params: nested dict with keys 'ln1', 'attn', 'ln2', 'ffn'.
+
+    Returns:
+        (d_x, grads) where d_x has shape (B, T, D) and grads is a nested dict
+        with keys 'ln1', 'ln2', 'attn', 'ffn' mirroring block_params.
+    """
+    # Rebuild a complete cache so all backward helpers have the fields they need.
+    x = cache['attn_branch']['x']
+    full_cache = _complete_block_cache(x, block_params)
+
+    # ---------------------------------------------------------
+    # Backward through the second branch:
+    # y = h1 + FFN(LN2(h1))
+    # ---------------------------------------------------------
+    ffn_branch = full_cache['ffn_branch']
+
+    d_h1_skip = d_y.copy()
+
+    d_ln2_out, ffn_grads = _ffn_sublayer_backward(
+        d_y,
+        ffn_branch['sublayer_cache'],
+        block_params['ffn']
+    )
+
+    d_h1_ln2, d_gamma2, d_beta2 = layernorm_backward_affine(
+        d_ln2_out,
+        ffn_branch['ln_cache']
+    )
+
+    d_h1 = d_h1_skip + d_h1_ln2
+
+    # ---------------------------------------------------------
+    # Backward through the first branch:
+    # h1 = x + Attn(LN1(x))
+    # ---------------------------------------------------------
+    attn_branch = full_cache['attn_branch']
+
+    d_x_skip = d_h1.copy()
+
+    d_ln1_out, attn_grads = _attn_sublayer_backward(
+        d_h1,
+        attn_branch['sublayer_cache'],
+        block_params['attn']
+    )
+
+    d_x_ln1, d_gamma1, d_beta1 = layernorm_backward_affine(
+        d_ln1_out,
+        attn_branch['ln_cache']
+    )
+
+    d_x = d_x_skip + d_x_ln1
+
+    grads = {
+        'ln1': {
+            'gamma': d_gamma1,
+            'beta': d_beta1
+        },
+        'ln2': {
+            'gamma': d_gamma2,
+            'beta': d_beta2
+        },
+        'attn': attn_grads,
+        'ffn': ffn_grads
+    }
+
+    return d_x, grads
 
 # Step 140 - stack_transformer_blocks (not yet solved)
 # TODO: implement
