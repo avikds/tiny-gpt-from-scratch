@@ -170,7 +170,7 @@ python scaffold.py
 - [x] **158.** forward_to_get_logits
 - [x] **159.** take_last_position_logits
 - [x] **160.** apply_temperature
-- [ ] **161.** top_k_filter
+- [x] **161.** top_k_filter
 - [ ] **162.** softmax_to_probs
 - [ ] **163.** sample_one_token
 - [ ] **164.** append_token_to_sequence
