@@ -58,7 +58,7 @@ python scaffold.py
 - [x] **46.** loop_fill_counts
 - [x] **47.** vectorize_counts_add_at
 - [x] **48.** add_one_smoothing
-- [ ] **49.** row_sums_of_counts
+- [x] **49.** row_sums_of_counts
 - [ ] **50.** normalize_counts_to_probs
 - [ ] **51.** sample_next_token
 - [ ] **52.** generate_sequence
