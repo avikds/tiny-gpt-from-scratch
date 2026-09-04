@@ -296,8 +296,11 @@ def row_sums_of_counts(n_matrix):
     """Return per-row sums of n_matrix with shape (V, 1)."""
     return sum_keepdims(n_matrix, axis=1)
 
-# Step 50 - normalize_counts_to_probs (not yet solved)
-# TODO: implement
+# Step 50 - normalize_counts_to_probs
+def normalize_counts_to_probs(n_matrix):
+    """Normalize a (V, V) count matrix into a row-stochastic probability matrix."""
+    row_sums = row_sums_of_counts(n_matrix)
+    return n_matrix / row_sums
 
 # Step 51 - sample_next_token (not yet solved)
 # TODO: implement
