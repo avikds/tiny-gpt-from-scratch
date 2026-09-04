@@ -183,6 +183,6 @@ python scaffold.py
 vocab_size=28, vocab[:10]=['\n', ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 train=1836 val=204
 batch X shape=(4, 8) Y shape=(4, 8)
-val_loss ~ 3.3362
-generated: 'hello\n\nvymqgqy\nl\nk\nlgcpd\nktobqymqio\nkledwwale'
+val_loss ~ 3.3350
+generated: 'hello\n\nlztogzy\npbmhymkt\n\nkupdwztohjfqipgzybjm'
 ```
