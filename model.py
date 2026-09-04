@@ -1534,8 +1534,48 @@ def lm_head_linear_forward(x, w_lm, b_lm):
         }
     }
 
-# Step 145 - full_model_forward (not yet solved)
-# TODO: implement
+# Step 145 - full_model_forward
+def full_model_forward(x_ids, model_params):
+    """Run embeddings, all blocks, final LN, and LM head; return logits and caches."""
+
+    tok_emb, tok_cache = token_embedding_forward(
+        x_ids,
+        model_params['tok_emb']
+    )
+
+    pos_emb = slice_positional_embedding(
+        model_params['pos_emb'],
+        x_ids.shape[1]
+    )
+
+    hidden = add_token_and_positional_embeddings(tok_emb, pos_emb)
+
+    hidden, block_caches = forward_through_all_blocks(
+        hidden,
+        model_params['blocks']
+    )
+
+    ln_f_y, ln_f_cache = final_layernorm_forward(
+        hidden,
+        model_params['ln_f']['gamma'],
+        model_params['ln_f']['beta']
+    )
+
+    lm_head_out = lm_head_linear_forward(
+        ln_f_y,
+        model_params['lm_head']['w_lm'],
+        model_params['lm_head']['b_lm']
+    )
+
+    return lm_head_out['logits'], {
+        'emb': {
+            'token_cache': tok_cache,
+            'pos_emb': pos_emb
+        },
+        'blocks': block_caches,
+        'ln_f': ln_f_cache,
+        'lm_head': lm_head_out['cache']
+    }
 
 # Step 146 - full_model_backward (not yet solved)
 # TODO: implement
