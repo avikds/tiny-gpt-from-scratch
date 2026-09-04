@@ -63,7 +63,7 @@ python scaffold.py
 - [x] **51.** sample_next_token
 - [x] **52.** generate_sequence
 - [x] **53.** decode_generated_sequence
-- [ ] **54.** log_prob_of_pair
+- [x] **54.** log_prob_of_pair
 - [ ] **55.** sum_negative_log_probs
 - [ ] **56.** average_nll
 - [ ] **57.** initialize_w_random
