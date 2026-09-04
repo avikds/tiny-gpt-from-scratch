@@ -1747,8 +1747,10 @@ def adam_bias_correction(m, v, beta1, beta2, t):
 
     return m_hat, v_hat
 
-# Step 153 - adam_parameter_update (not yet solved)
-# TODO: implement
+# Step 153 - adam_parameter_update
+def adam_parameter_update(param, m_hat, v_hat, lr, eps):
+    """Apply the Adam update: param - lr * m_hat / (sqrt(v_hat) + eps)."""
+    return param - lr * m_hat / (np.sqrt(v_hat) + eps)
 
 # Step 154 - wire_full_training_loop (not yet solved)
 # TODO: implement
