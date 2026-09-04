@@ -29,7 +29,7 @@ python scaffold.py
 - [x] **17.** elementwise_add
 - [x] **18.** elementwise_multiply
 - [x] **19.** scalar_broadcast_add
-- [ ] **20.** vector_matrix_broadcast_add
+- [x] **20.** vector_matrix_broadcast_add
 - [ ] **21.** array_exp
 - [ ] **22.** array_log
 - [ ] **23.** sum_all
