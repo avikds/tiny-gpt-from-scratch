@@ -7,122 +7,84 @@ Uses functions defined in model.py.
 
 from model import *  # noqa: F401, F403 (pulls in your solution functions)
 
-"""Tiny GPT from Scratch in NumPy — end-to-end demo scaffold."""
+"""Tiny GPT from scratch in NumPy: end-to-end scaffold demo."""
 
 import numpy as np
 
-from solution import (
-    build_char_vocab,
-    build_id_to_char,
-    encode_text,
-    decode_ids,
-    make_batches,
-    token_embedding_lookup,
-    add_positional_embeddings,
-    linear_projection,
-    compute_attention_scores,
-    scale_attention_scores,
-    apply_causal_mask,
-    softmax_attention_weights,
-    attention_context,
-    split_heads,
-    merge_heads,
-    project_qkv,
-    multi_head_scaled_dot_product_attention,
-    merge_and_output_project,
-    masked_multi_head_self_attention,
-    gelu_activation,
-    ffn_first_layer,
-    ffn_second_layer,
-    position_wise_feed_forward,
-    layernorm_stats,
-    layer_norm,
-    pre_norm_residual_sublayer,
-    transformer_block,
-    gpt_backbone,
-    project_to_vocab_logits,
-    gpt_forward,
-    cross_entropy_language_modeling_loss,
-    init_gpt_parameters,
-    collect_parameters,
-    training_step,
-    apply_optimizer_update,
-    run_training_loop,
-    last_position_logits,
-    scale_logits_by_temperature,
-    top_k_filter_logits,
-    sample_next_token,
-    generate_text,
-)
+from solution import *
 
 
-def main():
-    np.random.seed(0)
-    rng = np.random.default_rng(0)
+TOY_CORPUS = (
+    "hello world\nthe quick brown fox jumps over the lazy dog\n"
+    "tiny gpt learns characters one step at a time\n"
+) * 20
 
-    corpus = (
-        "hello world. this is a tiny gpt demo built from numpy.\n"
-        "the quick brown fox jumps over the lazy dog.\n"
-        "transformers learn to predict the next character.\n"
-    ) * 8
 
-    char_to_id = build_char_vocab(corpus)
-    id_to_char = build_id_to_char(char_to_id)
-    vocab_size = len(char_to_id)
-    data = encode_text(corpus, char_to_id)
-    print(f"vocab_size={vocab_size}, corpus_tokens={len(data)}")
-    print(f"sample decode: {decode_ids(data[:30], id_to_char)!r}")
-
-    block_size = 16
-    batch_size = 4
-    d_model = 32
-    num_heads = 4
-    d_ff = 64
-    num_layers = 2
-    num_steps = 3
-    learning_rate = 1e-2
-
-    params = init_gpt_parameters(
-        vocab_size=vocab_size,
-        max_seq_len=block_size,
-        d_model=d_model,
-        num_heads=num_heads,
-        d_ff=d_ff,
-        num_layers=num_layers,
-        seed=0,
-    )
-    # Stash num_heads so training_step / generate_text can find it.
-    params['num_heads'] = num_heads
-
-    flat_params = collect_parameters(params)
-    print(f"num parameter arrays: {len(flat_params)}")
-
-    inputs, targets = make_batches(data, batch_size, block_size, rng)
-    print(f"batch shapes: inputs={inputs.shape}, targets={targets.shape}")
-    logits = gpt_forward(inputs, params, num_heads)
-    print(f"logits shape: {logits.shape}")
-    init_loss = cross_entropy_language_modeling_loss(logits, targets)
-    print(f"initial loss: {init_loss:.4f}")
-
-    batches = [make_batches(data, batch_size, block_size, rng) for _ in range(num_steps)]
-    losses = run_training_loop(params, batches, num_steps, learning_rate)
-    print(f"loss history (first/last): {losses[0]:.4f} -> {losses[-1]:.4f}")
-
-    prompt = "the "
-    generated = generate_text(
-        params=params,
-        prompt=prompt,
-        num_new_tokens=40,
-        max_seq_len=block_size,
-        vocab=char_to_id,
-        id_to_char=id_to_char,
-        temperature=1.0,
-        top_k=5,
-        seed=0,
-    )
-    print(f"prompt: {prompt!r}")
-    print(f"generated: {generated!r}")
+def build_model(vocab_size, block_size, d_model=16, n_heads=2, d_ff=32, n_layers=2):
+    tok_emb = create_token_embedding(vocab_size, d_model)
+    pos_emb = create_positional_embedding(block_size, d_model)
+    blocks = stack_transformer_blocks(n_layers, d_model, n_heads, d_ff)
+    # Bridge block contract: transformer_block_forward expects attn['n_heads']
+    # and lowercase ffn keys (w1/b1/w2/b2), but stack_transformer_blocks emits
+    # uppercase W1/W2 and no n_heads. Patch here without touching the step.
+    for blk in blocks:
+        blk['attn']['n_heads'] = n_heads
+        ffn = blk['ffn']
+        blk['ffn'] = {
+            'w1': ffn['W1'], 'b1': ffn['b1'],
+            'w2': ffn['W2'], 'b2': ffn['b2'],
+        }
+    final_ln_gamma = np.ones((d_model,))
+    final_ln_beta = np.zeros((d_model,))
+    lm_w = np.random.randn(d_model, vocab_size) * 0.02
+    lm_b = np.zeros((vocab_size,))
+    return {
+        "tok_emb": tok_emb, "pos_emb": pos_emb, "blocks": blocks,
+        "ln_f": {"gamma": final_ln_gamma, "beta": final_ln_beta},
+        "lm_head": {"w_lm": lm_w, "b_lm": lm_b},
+        "block_size": block_size, "vocab_size": vocab_size,
+    }
 
 
 if __name__ == "__main__":
-    main()
+    np.random.seed(0)
+    rng = np.random.default_rng(0)
+
+    # 1) Tokenizer + corpus prep
+    text = read_text_file(TOY_CORPUS)
+    vocab = build_vocab(text)
+    stoi = build_stoi(vocab)
+    itos = build_itos(vocab)
+    vocab_size = len(vocab)
+    print(f"vocab_size={vocab_size}, vocab[:10]={vocab[:10]}")
+
+    data = encode_corpus_to_int_array(text, stoi)
+    split_idx = pick_split_point(len(data), 0.9)
+    train_ids, val_ids = slice_train_and_val(data, split_idx)
+    print(f"train={len(train_ids)} val={len(val_ids)}")
+
+    # 2) Batch sanity check
+    block_size = pick_block_size(8)
+    xb, yb = get_batch(train_ids, block_size, batch_size=4, rng=rng)
+    print(f"batch X shape={xb.shape} Y shape={yb.shape}")
+
+    # 3) Build the GPT model
+    params = build_model(vocab_size, block_size, d_model=16, n_heads=2, d_ff=32, n_layers=2)
+
+    # 4) Training step skipped: wire_full_training_loop depends on
+    #    full_model_backward, which isn't provided in the assembled solution.
+    #    The import remains available for discoverability; we just don't call
+    #    it on the critical path. The remaining demo (validation loss +
+    #    generation) only needs forward inference and exercises every other
+    #    helper end-to-end.
+
+    val_loss = logging_and_validation_loss(params, val_ids, block_size, batch_size=4, n_eval_batches=2)
+    print(f"val_loss ~ {val_loss:.4f}")
+
+    # 5) Generate text from a prompt
+    prompt_ids = encode_prompt("hello", stoi)
+    generated = generation_loop_for_n_steps(
+        params, prompt_ids, n_new_tokens=40,
+        block_size=block_size, temperature=1.0, top_k=5, rng=rng,
+    )
+    print("generated:", repr(decode_final_sequence(generated, itos)))

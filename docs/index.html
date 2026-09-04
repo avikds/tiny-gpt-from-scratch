@@ -210,50 +210,50 @@
       <h2 class="section-title">How it was built</h2>
       
             <div class="part-reveal" style="opacity: 1">
-              <h3 class="part-title">Part 1: Tokenization and Batching</h3>
-              <p class="part-description">Construct the character vocabulary, encoding/decoding utilities, and batched training samples for next-token prediction.</p>
+              <h3 class="part-title">Part 1: Tokenizer</h3>
+              <p class="part-description">Build a tiny character-level tokenizer with vocab, stoi/itos, and encode/decode helpers.</p>
               
             </div>
           
-            <div class="part-reveal" style="opacity: 1">
-              <h3 class="part-title">Part 2: Embeddings and Linear Projections</h3>
-              <p class="part-description">Implement token and positional embeddings and the generic linear projection used throughout the model.</p>
+            <div class="part-reveal" style="opacity: 0.6">
+              <h3 class="part-title">Part 2: NumPy and Softmax Foundations</h3>
+              <p class="part-description">Get fluent with NumPy arrays, indexing, broadcasting, reductions, and numerically stable softmax.</p>
               
             </div>
           
-            <div class="part-reveal" style="opacity: 1">
-              <h3 class="part-title">Part 3: Masked Multi-Head Self-Attention</h3>
-              <p class="part-description">Build scaled dot-product attention, head splitting and merging, and assemble the full masked multi-head self-attention layer.</p>
+            <div class="part-reveal" style="opacity: 0.6">
+              <h3 class="part-title">Part 3: Data Pipeline and Bigram Baseline</h3>
+              <p class="part-description">Load the corpus, build batched (X, Y) sequences, and train a counting-based bigram model as a baseline.</p>
               
             </div>
           
-            <div class="part-reveal" style="opacity: 1">
-              <h3 class="part-title">Part 4: Feed-Forward Network</h3>
-              <p class="part-description">Implement the GELU activation and the two-layer position-wise feed-forward network used inside each transformer block.</p>
+            <div class="part-reveal" style="opacity: 0.6">
+              <h3 class="part-title">Part 4: Single-Layer Neural Bigram</h3>
+              <p class="part-description">Replace the count table with a learned weight matrix and derive cross-entropy, gradients, and SGD updates.</p>
               
             </div>
           
-            <div class="part-reveal" style="opacity: 1">
-              <h3 class="part-title">Part 5: LayerNorm, Residuals, and Transformer Block</h3>
-              <p class="part-description">Add layer normalization, the pre-norm residual sublayer pattern, and combine attention and feed-forward into a transformer block, then stack into the GPT backbone.</p>
+            <div class="part-reveal" style="opacity: 0.6">
+              <h3 class="part-title">Part 5: Layer Primitives and Backprop</h3>
+              <p class="part-description">Implement forward and backward passes for linear, bias, ReLU, softmax+CE, and LayerNorm building blocks.</p>
               
             </div>
           
-            <div class="part-reveal" style="opacity: 1">
-              <h3 class="part-title">Part 6: Forward Pass and Loss</h3>
-              <p class="part-description">Project hidden states to vocabulary logits, run the full GPT forward pass, and compute the cross-entropy language modeling loss.</p>
+            <div class="part-reveal" style="opacity: 0.6">
+              <h3 class="part-title">Part 6: Embeddings and Self-Attention</h3>
+              <p class="part-description">Add token and positional embeddings, then build masked single-head and multi-head self-attention with full backward passes.</p>
               
             </div>
           
-            <div class="part-reveal" style="opacity: 1">
-              <h3 class="part-title">Part 7: Parameters, Optimization, and Training Loop</h3>
-              <p class="part-description">Initialize trainable parameters, collect them, run a training step with backpropagation, apply optimizer updates, and execute the full training loop.</p>
+            <div class="part-reveal" style="opacity: 0.6">
+              <h3 class="part-title">Part 7: FFN, Blocks, and Full Model</h3>
+              <p class="part-description">Compose feed-forward networks, residual connections, and pre-LN Transformer blocks into the complete GPT forward/backward.</p>
               
             </div>
           
-            <div class="part-reveal" style="opacity: 1">
-              <h3 class="part-title">Part 8: Autoregressive Text Generation</h3>
-              <p class="part-description">Implement temperature scaling, top-k filtering, and sampling to autoregressively generate text from a prompt.</p>
+            <div class="part-reveal" style="opacity: 0.6">
+              <h3 class="part-title">Part 8: Adam, Training Loop, and Generation</h3>
+              <p class="part-description">Implement Adam, wire up the full training and validation loop, then sample text with temperature and top-k decoding.</p>
               
             </div>
           
