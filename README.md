@@ -77,7 +77,7 @@ python scaffold.py
 - [x] **65.** cross_entropy_loss
 - [x] **66.** derive_dlogits_on_paper
 - [x] **67.** compute_dlogits
-- [ ] **68.** derive_dw_on_paper
+- [x] **68.** derive_dw_on_paper
 - [ ] **69.** compute_dw_scatter_add
 - [ ] **70.** sgd_update_w
 - [ ] **71.** run_one_training_step
