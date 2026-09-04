@@ -39,7 +39,7 @@ python scaffold.py
 - [x] **27.** matmul
 - [x] **28.** transpose_matrix
 - [x] **29.** sum_keepdims
-- [ ] **30.** naive_softmax_1d
+- [x] **30.** naive_softmax_1d
 - [ ] **31.** softmax_overflow_demo
 - [ ] **32.** stable_softmax_1d
 - [ ] **33.** stable_softmax_2d_rowwise
