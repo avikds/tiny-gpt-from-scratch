@@ -174,7 +174,7 @@ python scaffold.py
 - [x] **162.** softmax_to_probs
 - [x] **163.** sample_one_token
 - [x] **164.** append_token_to_sequence
-- [ ] **165.** generation_loop_for_n_steps
+- [x] **165.** generation_loop_for_n_steps
 - [ ] **166.** decode_final_sequence
 
 ---
