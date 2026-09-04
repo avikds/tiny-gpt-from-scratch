@@ -1125,8 +1125,65 @@ def ffn_linear_two_forward(a1, w2, b2):
         }
     }
 
-# Step 134 - ffn_backward (not yet solved)
-# TODO: implement
+# Step 134 - ffn_backward
+def ffn_backward(d_out, cache):
+    """Backprop through linear2 -> ReLU -> linear1 of the FFN.
+
+    cache keys: 'x', 'w1', 'h1', 'a1', 'w2'.
+    Returns dict with keys: 'dx', 'dw1', 'db1', 'dw2', 'db2'.
+    """
+    x = cache['x']
+    w1 = cache['w1']
+    h1 = cache['h1']
+    a1 = cache['a1']
+    w2 = cache['w2']
+
+    # Flatten (B, T, D) tensors into (B*T, D) for the 2D primitives.
+    B, T, d_model = x.shape
+    d_ff = h1.shape[-1]
+
+    d_out_flat = d_out.reshape(-1, d_model)
+    a1_flat = a1.reshape(-1, d_ff)
+    h1_flat = h1.reshape(-1, d_ff)
+    x_flat = x.reshape(-1, d_model)
+
+    # Backward through second linear layer: h2 = a1 @ w2 + b2
+    linear2_cache = {
+        'x': a1_flat,
+        'w': w2
+    }
+    dh2 = linear_backward_dx(d_out_flat, linear2_cache)
+    dw2 = linear_backward_dw(d_out_flat, linear2_cache)
+    db2 = bias_add_backward_db(
+        d_out_flat,
+        {'b_shape': (d_model,)}
+    )
+
+    # Backward through ReLU: a1 = ReLU(h1)
+    dh1 = relu_backward(
+        dh2,
+        {'x': h1_flat}
+    )
+
+    # Backward through first linear layer: h1 = x @ w1 + b1
+    linear1_cache = {
+        'x': x_flat,
+        'w': w1
+    }
+    dx_flat = linear_backward_dx(dh1, linear1_cache)
+    dw1 = linear_backward_dw(dh1, linear1_cache)
+    db1 = bias_add_backward_db(
+        dh1,
+        {'b_shape': (d_ff,)}
+    )
+
+    return {
+        'dx': dx_flat.reshape(B, T, d_model),
+        'dw1': dw1,
+        'db1': db1,
+        'dw2': dw2,
+        'db2': db2
+    }
 
 # Step 135 - residual_forward (not yet solved)
 # TODO: implement
