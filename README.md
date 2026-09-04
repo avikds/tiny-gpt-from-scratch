@@ -72,7 +72,7 @@ python scaffold.py
 - [x] **60.** forward_logits_onehot
 - [x] **61.** observe_lookup_equivalence
 - [x] **62.** forward_logits_lookup
-- [ ] **63.** logits_to_probs_rowwise
+- [x] **63.** logits_to_probs_rowwise
 - [ ] **64.** gather_correct_token_probs
 - [ ] **65.** cross_entropy_loss
 - [ ] **66.** derive_dlogits_on_paper
