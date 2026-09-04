@@ -553,8 +553,11 @@ def linear_backward_dx(dy, cache):
     w = cache['w']
     return dy @ w.T
 
-# Step 78 - linear_backward_dw (not yet solved)
-# TODO: implement
+# Step 78 - linear_backward_dw
+def linear_backward_dw(dy, cache):
+    """Return dL/dW for a linear layer Y = X @ W."""
+    x = cache['x']
+    return x.T @ dy
 
 # Step 79 - bias_add_forward (not yet solved)
 # TODO: implement
