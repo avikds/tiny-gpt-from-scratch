@@ -159,7 +159,7 @@ python scaffold.py
 - [x] **147.** initialize_adam_moments
 - [x] **148.** initialize_adam_step_counter
 - [x] **149.** adam_increment_step
-- [ ] **150.** adam_update_first_moment
+- [x] **150.** adam_update_first_moment
 - [ ] **151.** adam_update_second_moment
 - [ ] **152.** adam_bias_correction
 - [ ] **153.** adam_parameter_update
