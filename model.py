@@ -1577,8 +1577,118 @@ def full_model_forward(x_ids, model_params):
         'lm_head': lm_head_out['cache']
     }
 
-# Step 146 - full_model_backward (not yet solved)
-# TODO: implement
+# Step 146 - full_model_backward
+def full_model_backward(d_logits, caches, model_params):
+    """Propagate d_logits back through LM head, final LN, blocks, and embeddings."""
+
+    # ---------------------------------------------------------
+    # 1. Backward through the LM head
+    # logits = x @ w_lm + b_lm
+    # ---------------------------------------------------------
+    lm_cache = caches['lm_head']
+    x_lm = lm_cache['x']
+    w_lm = lm_cache['w_lm']
+
+    B, T, D = x_lm.shape
+    V = d_logits.shape[-1]
+
+    x_lm_flat = x_lm.reshape(-1, D)
+    d_logits_flat = d_logits.reshape(-1, V)
+
+    dw_lm = x_lm_flat.T @ d_logits_flat
+    db_lm = np.sum(d_logits_flat, axis=0)
+    d_ln_f_flat = d_logits_flat @ w_lm.T
+    d_ln_f = d_ln_f_flat.reshape(B, T, D)
+
+    # ---------------------------------------------------------
+    # 2. Backward through final LayerNorm
+    # Flatten B,T into one dimension so the existing
+    # layernorm_backward_full helper can be reused.
+    # ---------------------------------------------------------
+    ln_cache = caches['ln_f']
+
+    ln_x = ln_cache['x']
+    ln_x_hat = ln_cache['x_hat']
+    ln_mean = ln_cache['mean']
+    ln_var = ln_cache['var']
+    ln_gamma = ln_cache['gamma']
+
+    ln_x_flat = ln_x.reshape(-1, D)
+    ln_x_hat_flat = ln_x_hat.reshape(-1, D)
+    ln_mean_flat = ln_mean.reshape(-1, 1)
+    ln_var_flat = ln_var.reshape(-1, 1)
+
+    ln_cache_flat = {
+        'x': ln_x_flat,
+        'x_hat': ln_x_hat_flat,
+        'mean': ln_mean_flat,
+        'var': ln_var_flat,
+        'gamma': ln_gamma,
+        'eps': 1e-5
+    }
+
+    ln_grads = layernorm_backward_full(
+        d_ln_f_flat,
+        ln_cache_flat
+    )
+
+    d_blocks_in = ln_grads['dx'].reshape(B, T, D)
+    d_gamma_f = ln_grads['dgamma']
+    d_beta_f = ln_grads['dbeta']
+
+    # ---------------------------------------------------------
+    # 3. Backward through the Transformer blocks
+    # ---------------------------------------------------------
+    d_emb, block_grads = backward_through_all_blocks(
+        d_blocks_in,
+        caches['blocks'],
+        model_params['blocks']
+    )
+
+    # ---------------------------------------------------------
+    # 4. Backward through token + positional embedding sum
+    # ---------------------------------------------------------
+    token_ids = caches['emb']['tok_cache']['token_ids']
+
+    d_token_emb = np.zeros_like(
+        model_params['tok_emb'],
+        dtype=np.float64
+    )
+
+    np.add.at(
+        d_token_emb,
+        token_ids.reshape(-1),
+        d_emb.reshape(-1, D)
+    )
+
+    seq_len = caches['emb'].get(
+        'seq_len',
+        token_ids.shape[1]
+    )
+
+    d_pos_emb = np.zeros_like(
+        model_params['pos_emb'],
+        dtype=np.float64
+    )
+
+    d_pos_emb[:seq_len] = np.sum(d_emb, axis=0)
+
+    # ---------------------------------------------------------
+    # 5. Assemble gradient tree matching model_params
+    # ---------------------------------------------------------
+    return {
+        'tok_emb': d_token_emb,
+        'pos_emb': d_pos_emb,
+        'blocks': block_grads,
+        'ln_f': {
+            'gamma': d_gamma_f,
+            'beta': d_beta_f
+        },
+        'lm_head': {
+            'w_lm': dw_lm,
+            'b_lm': db_lm
+        }
+    }
 
 # Step 147 - initialize_adam_moments (not yet solved)
 # TODO: implement

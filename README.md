@@ -155,7 +155,7 @@ python scaffold.py
 - [x] **143.** final_layernorm_forward
 - [x] **144.** lm_head_linear_forward
 - [x] **145.** full_model_forward
-- [ ] **146.** full_model_backward
+- [x] **146.** full_model_backward
 - [ ] **147.** initialize_adam_moments
 - [ ] **148.** initialize_adam_step_counter
 - [ ] **149.** adam_increment_step
