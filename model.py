@@ -814,8 +814,10 @@ def scale_attention_scores(scores, d_head):
     """Rescale (B, T, T) attention scores by a function of d_head."""
     return scores / np.sqrt(d_head)
 
-# Step 105 - build_causal_mask (not yet solved)
-# TODO: implement
+# Step 105 - build_causal_mask
+def build_causal_mask(seq_len):
+    """Return a (seq_len, seq_len) boolean lower-triangular mask."""
+    return np.tril(np.ones((seq_len, seq_len), dtype=bool))
 
 # Step 106 - apply_causal_mask (not yet solved)
 # TODO: implement
