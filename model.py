@@ -442,8 +442,10 @@ def compute_dw_scatter_add(ids, dlogits, vocab_size):
     np.add.at(dW, ids, dlogits)
     return dW
 
-# Step 70 - sgd_update_w (not yet solved)
-# TODO: implement
+# Step 70 - sgd_update_w
+def sgd_update_w(w, dw, learning_rate):
+    """Apply one SGD step: return w - learning_rate * dw as a new array."""
+    return w - learning_rate * dw
 
 # Step 71 - run_one_training_step (not yet solved)
 # TODO: implement
