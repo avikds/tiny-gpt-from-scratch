@@ -52,7 +52,7 @@ python scaffold.py
 - [x] **40.** slice_y_at_offset
 - [x] **41.** sample_random_batch_offsets
 - [x] **42.** stack_x_batch
-- [ ] **43.** stack_y_batch
+- [x] **43.** stack_y_batch
 - [ ] **44.** get_batch
 - [ ] **45.** allocate_count_matrix
 - [ ] **46.** loop_fill_counts
