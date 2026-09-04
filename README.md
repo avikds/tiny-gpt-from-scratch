@@ -34,7 +34,7 @@ python scaffold.py
 - [x] **22.** array_log
 - [x] **23.** sum_all
 - [x] **24.** sum_axis0
-- [ ] **25.** sum_axis1
+- [x] **25.** sum_axis1
 - [ ] **26.** max_along_axis
 - [ ] **27.** matmul
 - [ ] **28.** transpose_matrix
