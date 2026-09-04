@@ -62,7 +62,7 @@ python scaffold.py
 - [x] **50.** normalize_counts_to_probs
 - [x] **51.** sample_next_token
 - [x] **52.** generate_sequence
-- [ ] **53.** decode_generated_sequence
+- [x] **53.** decode_generated_sequence
 - [ ] **54.** log_prob_of_pair
 - [ ] **55.** sum_negative_log_probs
 - [ ] **56.** average_nll
