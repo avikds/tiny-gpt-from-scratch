@@ -12,7 +12,7 @@ python scaffold.py
 
 - [x] **1.** build_vocab
 - [x] **2.** build_stoi
-- [ ] **3.** build_itos
+- [x] **3.** build_itos
 - [ ] **4.** encode_char
 - [ ] **5.** encode_string
 - [ ] **6.** decode_int
