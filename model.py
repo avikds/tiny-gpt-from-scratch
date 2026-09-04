@@ -74,8 +74,10 @@ def index_element(arr, i, j):
     """Return the scalar element at position (i, j) of a 2D array."""
     return arr[i, j]
 
-# Step 14 - slice_row (not yet solved)
-# TODO: implement
+# Step 14 - slice_row
+def slice_row(arr, i):
+    """Return row i of a 2D array as a 1D view."""
+    return arr[i]
 
 # Step 15 - slice_column (not yet solved)
 # TODO: implement
