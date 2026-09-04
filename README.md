@@ -119,7 +119,7 @@ python scaffold.py
 - [x] **107.** softmax_attention_weights
 - [x] **108.** attention_weighted_values
 - [x] **109.** apply_output_projection
-- [ ] **110.** output_projection_backward
+- [x] **110.** output_projection_backward
 - [ ] **111.** attention_value_backward
 - [ ] **112.** masked_softmax_backward
 - [ ] **113.** scale_scores_backward

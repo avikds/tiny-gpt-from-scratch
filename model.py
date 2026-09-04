@@ -848,8 +848,19 @@ def apply_output_projection(attn_out, w_o):
     """Project attention output (B,T,d_head) through Wo (d_head,d_model)."""
     return np.matmul(attn_out, w_o)
 
-# Step 110 - output_projection_backward (not yet solved)
-# TODO: implement
+# Step 110 - output_projection_backward
+def output_projection_backward(d_proj, cache):
+    """Backprop through proj = attn_out @ w_o. Return {'d_attn_out', 'dw_o'}."""
+    attn_out = cache['attn_out']
+    w_o = cache['w_o']
+
+    d_attn_out = np.matmul(d_proj, w_o.T)
+    dw_o = np.einsum('bth,btm->hm', attn_out, d_proj)
+
+    return {
+        'd_attn_out': d_attn_out,
+        'dw_o': dw_o
+    }
 
 # Step 111 - attention_value_backward (not yet solved)
 # TODO: implement
