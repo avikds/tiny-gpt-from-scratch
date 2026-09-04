@@ -21,8 +21,10 @@ def build_itos(vocab):
     """Return a dict mapping each index 0..len(vocab)-1 to its character."""
     return {i: ch for i, ch in enumerate(vocab)}
 
-# Step 4 - encode_char (not yet solved)
-# TODO: implement
+# Step 4 - encode_char
+def encode_char(ch, stoi):
+    """Return the integer token id for a single character ch using stoi."""
+    return stoi[ch]
 
 # Step 5 - encode_string (not yet solved)
 # TODO: implement
