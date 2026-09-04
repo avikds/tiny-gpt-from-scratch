@@ -1979,8 +1979,10 @@ def softmax_to_probs(logits):
     """Convert (1, V) logits into a row-wise probability distribution."""
     return stable_softmax_2d_rowwise(logits)
 
-# Step 163 - sample_one_token (not yet solved)
-# TODO: implement
+# Step 163 - sample_one_token
+def sample_one_token(probs, rng):
+    """Sample one token id from probs of shape (1, vocab_size) using rng."""
+    return int(rng.choice(probs.shape[1], p=probs[0]))
 
 # Step 164 - append_token_to_sequence (not yet solved)
 # TODO: implement

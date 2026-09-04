@@ -172,7 +172,7 @@ python scaffold.py
 - [x] **160.** apply_temperature
 - [x] **161.** top_k_filter
 - [x] **162.** softmax_to_probs
-- [ ] **163.** sample_one_token
+- [x] **163.** sample_one_token
 - [ ] **164.** append_token_to_sequence
 - [ ] **165.** generation_loop_for_n_steps
 - [ ] **166.** decode_final_sequence
