@@ -100,7 +100,7 @@ python scaffold.py
 - [x] **88.** layernorm_backward_subtract_mean
 - [x] **89.** layernorm_backward_divide_std
 - [x] **90.** layernorm_backward_full
-- [ ] **91.** layernorm_backward_implementation
+- [x] **91.** layernorm_backward_implementation
 - [ ] **92.** create_token_embedding
 - [ ] **93.** token_embedding_forward
 - [ ] **94.** token_embedding_backward
