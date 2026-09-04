@@ -65,7 +65,7 @@ python scaffold.py
 - [x] **53.** decode_generated_sequence
 - [x] **54.** log_prob_of_pair
 - [x] **55.** sum_negative_log_probs
-- [ ] **56.** average_nll
+- [x] **56.** average_nll
 - [ ] **57.** initialize_w_random
 - [ ] **58.** scale_w_small
 - [ ] **59.** one_hot_encode_batch
