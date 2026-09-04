@@ -163,7 +163,7 @@ python scaffold.py
 - [x] **151.** adam_update_second_moment
 - [x] **152.** adam_bias_correction
 - [x] **153.** adam_parameter_update
-- [ ] **154.** wire_full_training_loop
+- [x] **154.** wire_full_training_loop
 - [ ] **155.** logging_and_validation_loss
 - [ ] **156.** encode_prompt
 - [ ] **157.** crop_context_to_block_size
