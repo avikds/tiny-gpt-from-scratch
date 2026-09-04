@@ -122,7 +122,7 @@ python scaffold.py
 - [x] **110.** output_projection_backward
 - [x] **111.** attention_value_backward
 - [x] **112.** masked_softmax_backward
-- [ ] **113.** scale_scores_backward
+- [x] **113.** scale_scores_backward
 - [ ] **114.** qk_scores_backward
 - [ ] **115.** qkv_projection_backward
 - [ ] **116.** choose_attention_head_config
