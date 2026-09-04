@@ -86,7 +86,7 @@ python scaffold.py
 - [x] **74.** linear_forward
 - [x] **75.** derive_dx_on_paper
 - [x] **76.** derive_linear_dw_on_paper
-- [ ] **77.** linear_backward_dx
+- [x] **77.** linear_backward_dx
 - [ ] **78.** linear_backward_dw
 - [ ] **79.** bias_add_forward
 - [ ] **80.** bias_add_backward_db

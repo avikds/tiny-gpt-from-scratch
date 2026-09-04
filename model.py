@@ -547,8 +547,11 @@ def derive_linear_dw_on_paper():
         "dL/dW = X.T @ dY"
     )
 
-# Step 77 - linear_backward_dx (not yet solved)
-# TODO: implement
+# Step 77 - linear_backward_dx
+def linear_backward_dx(dy, cache):
+    # Compute dL/dX = dY @ W.T
+    w = cache['w']
+    return dy @ w.T
 
 # Step 78 - linear_backward_dw (not yet solved)
 # TODO: implement
