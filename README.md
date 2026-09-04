@@ -111,7 +111,7 @@ python scaffold.py
 - [x] **99.** create_qkv_projections
 - [x] **100.** compute_query
 - [x] **101.** compute_key
-- [ ] **102.** compute_value
+- [x] **102.** compute_value
 - [ ] **103.** compute_attention_scores
 - [ ] **104.** scale_attention_scores
 - [ ] **105.** build_causal_mask
