@@ -230,8 +230,11 @@ def slice_y_at_offset(data, i, block_size):
     """Return the target window of length block_size starting at i+1."""
     return data[i + 1:i + 1 + block_size]
 
-# Step 41 - sample_random_batch_offsets (not yet solved)
-# TODO: implement
+# Step 41 - sample_random_batch_offsets
+def sample_random_batch_offsets(data_len, block_size, batch_size, rng):
+    """Sample batch_size random valid starting offsets for (block_size+1)-windows."""
+    max_start = data_len - block_size
+    return rng.integers(0, max_start, size=batch_size)
 
 # Step 42 - stack_x_batch (not yet solved)
 # TODO: implement
