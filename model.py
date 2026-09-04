@@ -215,8 +215,10 @@ def slice_train_and_val(data, split_idx):
     """Split a 1D token-id array into (train, val) at split_idx."""
     return data[:split_idx], data[split_idx:]
 
-# Step 38 - pick_block_size (not yet solved)
-# TODO: implement
+# Step 38 - pick_block_size
+def pick_block_size(default_size):
+    """Return the context length (block_size) for training windows."""
+    return max(1, int(default_size))
 
 # Step 39 - slice_x_at_offset (not yet solved)
 # TODO: implement
