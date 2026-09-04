@@ -11,7 +11,7 @@ python scaffold.py
 ## Steps
 
 - [x] **1.** build_vocab
-- [ ] **2.** build_stoi
+- [x] **2.** build_stoi
 - [ ] **3.** build_itos
 - [ ] **4.** encode_char
 - [ ] **5.** encode_string
