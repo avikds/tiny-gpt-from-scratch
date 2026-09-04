@@ -624,8 +624,10 @@ def layernorm_forward_variance(x, mean):
     squared = centered * centered
     return sum_keepdims(squared, axis=-1) / x.shape[-1]
 
-# Step 86 - layernorm_forward_normalize (not yet solved)
-# TODO: implement
+# Step 86 - layernorm_forward_normalize
+def layernorm_forward_normalize(x, mean, var, eps):
+    """Normalize each row of x to zero mean and unit variance."""
+    return (x - mean) / np.sqrt(var + eps)
 
 # Step 87 - layernorm_forward_affine (not yet solved)
 # TODO: implement

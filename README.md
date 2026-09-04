@@ -95,7 +95,7 @@ python scaffold.py
 - [x] **83.** softmax_cross_entropy_backward
 - [x] **84.** layernorm_forward_mean
 - [x] **85.** layernorm_forward_variance
-- [ ] **86.** layernorm_forward_normalize
+- [x] **86.** layernorm_forward_normalize
 - [ ] **87.** layernorm_forward_affine
 - [ ] **88.** layernorm_backward_subtract_mean
 - [ ] **89.** layernorm_backward_divide_std
