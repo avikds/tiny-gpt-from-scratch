@@ -76,7 +76,7 @@ python scaffold.py
 - [x] **64.** gather_correct_token_probs
 - [x] **65.** cross_entropy_loss
 - [x] **66.** derive_dlogits_on_paper
-- [ ] **67.** compute_dlogits
+- [x] **67.** compute_dlogits
 - [ ] **68.** derive_dw_on_paper
 - [ ] **69.** compute_dw_scatter_add
 - [ ] **70.** sgd_update_w
