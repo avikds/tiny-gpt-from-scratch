@@ -144,7 +144,7 @@ python scaffold.py
 - [x] **132.** ffn_activation_forward
 - [x] **133.** ffn_linear_two_forward
 - [x] **134.** ffn_backward
-- [ ] **135.** residual_forward
+- [x] **135.** residual_forward
 - [ ] **136.** residual_backward
 - [ ] **137.** pre_layernorm_sublayer_forward
 - [ ] **138.** transformer_block_forward
