@@ -113,7 +113,7 @@ python scaffold.py
 - [x] **101.** compute_key
 - [x] **102.** compute_value
 - [x] **103.** compute_attention_scores
-- [ ] **104.** scale_attention_scores
+- [x] **104.** scale_attention_scores
 - [ ] **105.** build_causal_mask
 - [ ] **106.** apply_causal_mask
 - [ ] **107.** softmax_attention_weights
