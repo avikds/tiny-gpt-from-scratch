@@ -129,7 +129,7 @@ python scaffold.py
 - [x] **117.** create_multihead_qkv_projections
 - [x] **118.** create_multihead_output_projection
 - [x] **119.** reshape_to_heads
-- [ ] **120.** transpose_heads_to_front
+- [x] **120.** transpose_heads_to_front
 - [ ] **121.** get_multihead_n_heads
 - [ ] **122.** get_multihead_sequence_length
 - [ ] **123.** compute_d_head
