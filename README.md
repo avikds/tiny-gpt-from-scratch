@@ -103,7 +103,7 @@ python scaffold.py
 - [x] **91.** layernorm_backward_implementation
 - [x] **92.** create_token_embedding
 - [x] **93.** token_embedding_forward
-- [ ] **94.** token_embedding_backward
+- [x] **94.** token_embedding_backward
 - [ ] **95.** create_positional_embedding
 - [ ] **96.** slice_positional_embedding
 - [ ] **97.** add_token_and_positional_embeddings

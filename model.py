@@ -735,8 +735,17 @@ def token_embedding_forward(token_ids, embedding_matrix):
     }
     return out, cache
 
-# Step 94 - token_embedding_backward (not yet solved)
-# TODO: implement
+# Step 94 - token_embedding_backward
+def token_embedding_backward(d_out, cache):
+    # Scatter-add d_out gradients into the corresponding token embedding rows.
+    token_ids = cache['token_ids']
+    vocab_size = cache['vocab_size']
+    d_model = d_out.shape[-1]
+
+    dE = np.zeros((vocab_size, d_model), dtype=np.float64)
+    np.add.at(dE, token_ids.reshape(-1), d_out.reshape(-1, d_model))
+
+    return dE
 
 # Step 95 - create_positional_embedding (not yet solved)
 # TODO: implement
