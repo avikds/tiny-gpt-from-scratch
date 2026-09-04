@@ -205,8 +205,10 @@ def encode_corpus_to_int_array(text, stoi):
     """Convert the corpus string into a 1D NumPy int64 array of token ids."""
     return np.array(encode_string(text, stoi), dtype=np.int64)
 
-# Step 36 - pick_split_point (not yet solved)
-# TODO: implement
+# Step 36 - pick_split_point
+def pick_split_point(n, train_frac):
+    """Return integer split index so data[:idx] is train and data[idx:] is val."""
+    return int(n * train_frac)
 
 # Step 37 - slice_train_and_val (not yet solved)
 # TODO: implement
