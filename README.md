@@ -44,7 +44,7 @@ python scaffold.py
 - [x] **32.** stable_softmax_1d
 - [x] **33.** stable_softmax_2d_rowwise
 - [x] **34.** read_text_file
-- [ ] **35.** encode_corpus_to_int_array
+- [x] **35.** encode_corpus_to_int_array
 - [ ] **36.** pick_split_point
 - [ ] **37.** slice_train_and_val
 - [ ] **38.** pick_block_size
