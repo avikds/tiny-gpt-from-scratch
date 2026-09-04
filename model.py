@@ -367,8 +367,20 @@ def forward_logits_onehot(onehot, w_matrix):
     # Compute logits for the neural bigram model as onehot @ W.
     return matmul(onehot, w_matrix)
 
-# Step 61 - observe_lookup_equivalence (not yet solved)
-# TODO: implement
+# Step 61 - observe_lookup_equivalence
+def observe_lookup_equivalence(w, ids):
+    """Show that one-hot @ W equals W[ids] for a small example.
+
+    Returns a dict with keys 'onehot_result' and 'index_result'.
+    """
+    onehot = one_hot_encode_batch(ids, w.shape[0])
+    onehot_result = forward_logits_onehot(onehot, w)
+    index_result = w[ids]
+
+    return {
+        'onehot_result': onehot_result,
+        'index_result': index_result
+    }
 
 # Step 62 - forward_logits_lookup (not yet solved)
 # TODO: implement

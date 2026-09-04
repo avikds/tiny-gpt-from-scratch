@@ -70,7 +70,7 @@ python scaffold.py
 - [x] **58.** scale_w_small
 - [x] **59.** one_hot_encode_batch
 - [x] **60.** forward_logits_onehot
-- [ ] **61.** observe_lookup_equivalence
+- [x] **61.** observe_lookup_equivalence
 - [ ] **62.** forward_logits_lookup
 - [ ] **63.** logits_to_probs_rowwise
 - [ ] **64.** gather_correct_token_probs
