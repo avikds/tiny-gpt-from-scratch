@@ -130,7 +130,7 @@ python scaffold.py
 - [x] **118.** create_multihead_output_projection
 - [x] **119.** reshape_to_heads
 - [x] **120.** transpose_heads_to_front
-- [ ] **121.** get_multihead_n_heads
+- [x] **121.** get_multihead_n_heads
 - [ ] **122.** get_multihead_sequence_length
 - [ ] **123.** compute_d_head
 - [ ] **124.** multihead_masked_softmax_scores
