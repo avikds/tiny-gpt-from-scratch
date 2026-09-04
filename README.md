@@ -89,7 +89,7 @@ python scaffold.py
 - [x] **77.** linear_backward_dx
 - [x] **78.** linear_backward_dw
 - [x] **79.** bias_add_forward
-- [ ] **80.** bias_add_backward_db
+- [x] **80.** bias_add_backward_db
 - [ ] **81.** relu_forward
 - [ ] **82.** relu_backward
 - [ ] **83.** softmax_cross_entropy_backward
