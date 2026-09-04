@@ -115,7 +115,7 @@ python scaffold.py
 - [x] **103.** compute_attention_scores
 - [x] **104.** scale_attention_scores
 - [x] **105.** build_causal_mask
-- [ ] **106.** apply_causal_mask
+- [x] **106.** apply_causal_mask
 - [ ] **107.** softmax_attention_weights
 - [ ] **108.** attention_weighted_values
 - [ ] **109.** apply_output_projection
