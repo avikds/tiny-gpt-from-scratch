@@ -177,6 +177,12 @@ python scaffold.py
 - [x] **165.** generation_loop_for_n_steps
 - [x] **166.** decode_final_sequence
 
----
+## Results
 
-Built on Deep-ML.
+```
+vocab_size=28, vocab[:10]=['\n', ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+train=1836 val=204
+batch X shape=(4, 8) Y shape=(4, 8)
+val_loss ~ 3.3362
+generated: 'hello\n\nvymqgqy\nl\nk\nlgcpd\nktobqymqio\nkledwwale'
+```
