@@ -139,8 +139,10 @@ def max_along_axis(arr, axis):
     """Return the maximum of arr along the given axis, with that axis removed."""
     return np.max(arr, axis=axis)
 
-# Step 27 - matmul (not yet solved)
-# TODO: implement
+# Step 27 - matmul
+def matmul(a, b):
+    """Return the matrix product a @ b for 2D arrays a (M,K) and b (K,N)."""
+    return a @ b
 
 # Step 28 - transpose_matrix (not yet solved)
 # TODO: implement
