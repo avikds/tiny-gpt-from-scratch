@@ -593,8 +593,11 @@ def relu_forward(x):
         }
     }
 
-# Step 82 - relu_backward (not yet solved)
-# TODO: implement
+# Step 82 - relu_backward
+def relu_backward(dy, cache):
+    """Backward pass for ReLU. cache['x'] holds the original input."""
+    x = cache['x']
+    return dy * (x > 0)
 
 # Step 83 - softmax_cross_entropy_backward (not yet solved)
 # TODO: implement
