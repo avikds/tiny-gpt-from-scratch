@@ -168,7 +168,7 @@ python scaffold.py
 - [x] **156.** encode_prompt
 - [x] **157.** crop_context_to_block_size
 - [x] **158.** forward_to_get_logits
-- [ ] **159.** take_last_position_logits
+- [x] **159.** take_last_position_logits
 - [ ] **160.** apply_temperature
 - [ ] **161.** top_k_filter
 - [ ] **162.** softmax_to_probs
