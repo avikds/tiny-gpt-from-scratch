@@ -28,7 +28,7 @@ python scaffold.py
 - [x] **16.** slice_subblock
 - [x] **17.** elementwise_add
 - [x] **18.** elementwise_multiply
-- [ ] **19.** scalar_broadcast_add
+- [x] **19.** scalar_broadcast_add
 - [ ] **20.** vector_matrix_broadcast_add
 - [ ] **21.** array_exp
 - [ ] **22.** array_log
