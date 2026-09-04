@@ -119,8 +119,10 @@ def array_log(arr):
     """Return the elementwise natural log of arr (assumes arr > 0)."""
     return np.log(arr)
 
-# Step 23 - sum_all (not yet solved)
-# TODO: implement
+# Step 23 - sum_all
+def sum_all(arr):
+    """Return the sum of every element of arr as a scalar."""
+    return arr.sum()
 
 # Step 24 - sum_axis0 (not yet solved)
 # TODO: implement
