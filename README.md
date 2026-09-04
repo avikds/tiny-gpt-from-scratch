@@ -78,7 +78,7 @@ python scaffold.py
 - [x] **66.** derive_dlogits_on_paper
 - [x] **67.** compute_dlogits
 - [x] **68.** derive_dw_on_paper
-- [ ] **69.** compute_dw_scatter_add
+- [x] **69.** compute_dw_scatter_add
 - [ ] **70.** sgd_update_w
 - [ ] **71.** run_one_training_step
 - [ ] **72.** train_neural_bigram_loop
