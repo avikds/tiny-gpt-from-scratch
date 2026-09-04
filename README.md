@@ -104,7 +104,7 @@ python scaffold.py
 - [x] **92.** create_token_embedding
 - [x] **93.** token_embedding_forward
 - [x] **94.** token_embedding_backward
-- [ ] **95.** create_positional_embedding
+- [x] **95.** create_positional_embedding
 - [ ] **96.** slice_positional_embedding
 - [ ] **97.** add_token_and_positional_embeddings
 - [ ] **98.** embedding_sum_backward

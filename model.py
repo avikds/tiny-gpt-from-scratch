@@ -747,8 +747,11 @@ def token_embedding_backward(d_out, cache):
 
     return dE
 
-# Step 95 - create_positional_embedding (not yet solved)
-# TODO: implement
+# Step 95 - create_positional_embedding
+def create_positional_embedding(block_size, d_model, scale=0.02):
+    """Initialize the learned positional embedding matrix P of shape (block_size, d_model)."""
+    random_values = make_2d_random(block_size, d_model, seed=None)
+    return scale_w_small(random_values, scale)
 
 # Step 96 - slice_positional_embedding (not yet solved)
 # TODO: implement
