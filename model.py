@@ -1196,24 +1196,36 @@ def residual_backward(d_y):
     return d_y.copy(), d_y.copy()
 
 # Step 137 - pre_layernorm_sublayer_forward
-def pre_layernorm_sublayer_forward(x, ln_params, sublayer_fn, sublayer_params):
-    """Apply pre-LayerNorm, run a sublayer, then add the result to the original x."""
-    ln_result = layernorm_forward_affine(
+def transformer_block_forward(x, block_params):
+    """Run one pre-LN Transformer block forward.
+
+    Args:
+        x: ndarray of shape (B, T, d_model).
+        block_params: dict with keys 'ln1', 'attn', 'ln2', 'ffn'.
+
+    Returns:
+        dict with 'y' (B, T, d_model) and 'cache' with keys
+        'attn_branch' and 'ffn_branch'.
+    """
+    attn_branch = pre_layernorm_sublayer_forward(
         x,
-        ln_params['gamma'],
-        ln_params['beta'],
-        ln_params.get('eps', 1e-5)
+        block_params['ln1'],
+        multihead_attention_forward,
+        block_params['attn']
     )
 
-    sublayer_result = sublayer_fn(ln_result['y'], sublayer_params)
-    y = residual_forward(x, sublayer_result['y'])
+    ffn_branch = pre_layernorm_sublayer_forward(
+        attn_branch['y'],
+        block_params['ln2'],
+        ffn_forward,
+        block_params['ffn']
+    )
 
     return {
-        'y': y,
+        'y': ffn_branch['y'],
         'cache': {
-            'x': x,
-            'ln_cache': ln_result['cache'],
-            'sublayer_cache': sublayer_result['cache']
+            'attn_branch': attn_branch['cache'],
+            'ffn_branch': ffn_branch['cache']
         }
     }
 
