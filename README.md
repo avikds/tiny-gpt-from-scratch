@@ -108,7 +108,7 @@ python scaffold.py
 - [x] **96.** slice_positional_embedding
 - [x] **97.** add_token_and_positional_embeddings
 - [x] **98.** embedding_sum_backward
-- [ ] **99.** create_qkv_projections
+- [x] **99.** create_qkv_projections
 - [ ] **100.** compute_query
 - [ ] **101.** compute_key
 - [ ] **102.** compute_value
