@@ -140,7 +140,7 @@ python scaffold.py
 - [x] **128.** merge_heads_to_d_model
 - [x] **129.** multihead_output_projection_forward
 - [x] **130.** multihead_reshape_transpose_backward
-- [ ] **131.** ffn_linear_one_forward
+- [x] **131.** ffn_linear_one_forward
 - [ ] **132.** ffn_activation_forward
 - [ ] **133.** ffn_linear_two_forward
 - [ ] **134.** ffn_backward
