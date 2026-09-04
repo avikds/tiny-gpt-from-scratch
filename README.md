@@ -54,7 +54,7 @@ python scaffold.py
 - [x] **42.** stack_x_batch
 - [x] **43.** stack_y_batch
 - [x] **44.** get_batch
-- [ ] **45.** allocate_count_matrix
+- [x] **45.** allocate_count_matrix
 - [ ] **46.** loop_fill_counts
 - [ ] **47.** vectorize_counts_add_at
 - [ ] **48.** add_one_smoothing
