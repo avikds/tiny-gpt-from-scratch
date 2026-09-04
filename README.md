@@ -56,7 +56,7 @@ python scaffold.py
 - [x] **44.** get_batch
 - [x] **45.** allocate_count_matrix
 - [x] **46.** loop_fill_counts
-- [ ] **47.** vectorize_counts_add_at
+- [x] **47.** vectorize_counts_add_at
 - [ ] **48.** add_one_smoothing
 - [ ] **49.** row_sums_of_counts
 - [ ] **50.** normalize_counts_to_probs
