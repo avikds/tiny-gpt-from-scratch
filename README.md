@@ -165,7 +165,7 @@ python scaffold.py
 - [x] **153.** adam_parameter_update
 - [x] **154.** wire_full_training_loop
 - [x] **155.** logging_and_validation_loss
-- [ ] **156.** encode_prompt
+- [x] **156.** encode_prompt
 - [ ] **157.** crop_context_to_block_size
 - [ ] **158.** forward_to_get_logits
 - [ ] **159.** take_last_position_logits
