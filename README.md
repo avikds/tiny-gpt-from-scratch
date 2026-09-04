@@ -22,7 +22,7 @@ python scaffold.py
 - [x] **10.** get_array_dtype
 - [x] **11.** make_2d_zeros
 - [x] **12.** make_2d_random
-- [ ] **13.** index_element
+- [x] **13.** index_element
 - [ ] **14.** slice_row
 - [ ] **15.** slice_column
 - [ ] **16.** slice_subblock
