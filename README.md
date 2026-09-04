@@ -125,7 +125,7 @@ python scaffold.py
 - [x] **113.** scale_scores_backward
 - [x] **114.** qk_scores_backward
 - [x] **115.** qkv_projection_backward
-- [ ] **116.** choose_attention_head_config
+- [x] **116.** choose_attention_head_config
 - [ ] **117.** create_multihead_qkv_projections
 - [ ] **118.** create_multihead_output_projection
 - [ ] **119.** reshape_to_heads
