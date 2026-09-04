@@ -350,8 +350,10 @@ def initialize_w_random(vocab_size, rng):
     """Return a (vocab_size, vocab_size) float64 matrix of N(0,1) samples drawn from rng."""
     return rng.standard_normal((vocab_size, vocab_size))
 
-# Step 58 - scale_w_small (not yet solved)
-# TODO: implement
+# Step 58 - scale_w_small
+def scale_w_small(w_matrix, scale):
+    """Return w_matrix scaled by the given small factor."""
+    return w_matrix * scale
 
 # Step 59 - one_hot_encode_batch (not yet solved)
 # TODO: implement
