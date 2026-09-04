@@ -1094,8 +1094,22 @@ def ffn_linear_one_forward(x, w1, b1):
         }
     }
 
-# Step 132 - ffn_activation_forward (not yet solved)
-# TODO: implement
+# Step 132 - ffn_activation_forward
+def ffn_activation_forward(h1):
+    """Apply ReLU to FFN hidden pre-activations.
+
+    Args:
+        h1: ndarray of shape (B, T, d_ff)
+
+    Returns:
+        a1: ndarray of shape (B, T, d_ff)
+        cache: dict with key 'h1'
+    """
+    relu_result = relu_forward(h1)
+
+    return relu_result['y'], {
+        'h1': h1
+    }
 
 # Step 133 - ffn_linear_two_forward (not yet solved)
 # TODO: implement
