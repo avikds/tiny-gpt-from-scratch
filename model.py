@@ -579,8 +579,19 @@ def bias_add_backward_db(dy, cache):
     b_shape = cache['b_shape']
     return np.sum(dy, axis=0).reshape(b_shape)
 
-# Step 81 - relu_forward (not yet solved)
-# TODO: implement
+# Step 81 - relu_forward
+def relu_forward(x):
+    """Apply elementwise ReLU and cache the input for backward.
+
+    Returns a dict with keys 'y' (activated array) and 'cache' (dict with 'x').
+    """
+    y = np.maximum(0, x)
+    return {
+        'y': y,
+        'cache': {
+            'x': x
+        }
+    }
 
 # Step 82 - relu_backward (not yet solved)
 # TODO: implement
