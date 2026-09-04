@@ -151,7 +151,7 @@ python scaffold.py
 - [x] **139.** transformer_block_backward
 - [x] **140.** stack_transformer_blocks
 - [x] **141.** forward_through_all_blocks
-- [ ] **142.** backward_through_all_blocks
+- [x] **142.** backward_through_all_blocks
 - [ ] **143.** final_layernorm_forward
 - [ ] **144.** lm_head_linear_forward
 - [ ] **145.** full_model_forward
