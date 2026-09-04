@@ -1033,8 +1033,10 @@ def multihead_weighted_sum(weights, v_heads):
     """Compute per-head attention output as weights @ V across all heads."""
     return np.matmul(weights, v_heads)
 
-# Step 126 - transpose_heads_to_back (not yet solved)
-# TODO: implement
+# Step 126 - transpose_heads_to_back
+def transpose_heads_to_back(x_heads):
+    """Move the heads axis back to shape (B, T, n_heads, d_head)."""
+    return np.transpose(x_heads, (0, 2, 1, 3))
 
 # Step 127 - get_multihead_output_sequence_length (not yet solved)
 # TODO: implement
