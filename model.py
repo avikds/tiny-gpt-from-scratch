@@ -1984,8 +1984,11 @@ def sample_one_token(probs, rng):
     """Sample one token id from probs of shape (1, vocab_size) using rng."""
     return int(rng.choice(probs.shape[1], p=probs[0]))
 
-# Step 164 - append_token_to_sequence (not yet solved)
-# TODO: implement
+# Step 164 - append_token_to_sequence
+def append_token_to_sequence(context_ids, token_id):
+    """Append token_id as a new final column to context_ids of shape (1, T)."""
+    token = np.array([[token_id]], dtype=context_ids.dtype)
+    return np.concatenate((context_ids, token), axis=1)
 
 # Step 165 - generation_loop_for_n_steps (not yet solved)
 # TODO: implement
