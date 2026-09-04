@@ -24,7 +24,7 @@ python scaffold.py
 - [x] **12.** make_2d_random
 - [x] **13.** index_element
 - [x] **14.** slice_row
-- [ ] **15.** slice_column
+- [x] **15.** slice_column
 - [ ] **16.** slice_subblock
 - [ ] **17.** elementwise_add
 - [ ] **18.** elementwise_multiply

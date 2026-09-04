@@ -79,8 +79,10 @@ def slice_row(arr, i):
     """Return row i of a 2D array as a 1D view."""
     return arr[i]
 
-# Step 15 - slice_column (not yet solved)
-# TODO: implement
+# Step 15 - slice_column
+def slice_column(arr, j):
+    """Return column j of a 2D array as a 1D array of length R."""
+    return arr[:, j]
 
 # Step 16 - slice_subblock (not yet solved)
 # TODO: implement
