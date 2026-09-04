@@ -42,7 +42,7 @@ python scaffold.py
 - [x] **30.** naive_softmax_1d
 - [x] **31.** softmax_overflow_demo
 - [x] **32.** stable_softmax_1d
-- [ ] **33.** stable_softmax_2d_rowwise
+- [x] **33.** stable_softmax_2d_rowwise
 - [ ] **34.** read_text_file
 - [ ] **35.** encode_corpus_to_int_array
 - [ ] **36.** pick_split_point
