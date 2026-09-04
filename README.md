@@ -110,7 +110,7 @@ python scaffold.py
 - [x] **98.** embedding_sum_backward
 - [x] **99.** create_qkv_projections
 - [x] **100.** compute_query
-- [ ] **101.** compute_key
+- [x] **101.** compute_key
 - [ ] **102.** compute_value
 - [ ] **103.** compute_attention_scores
 - [ ] **104.** scale_attention_scores

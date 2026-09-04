@@ -794,8 +794,10 @@ def compute_query(x, w_q):
     """Project x (B, T, d_model) into queries Q (B, T, d_head) using w_q."""
     return np.matmul(x, w_q)
 
-# Step 101 - compute_key (not yet solved)
-# TODO: implement
+# Step 101 - compute_key
+def compute_key(x, w_k):
+    """Project x through Wk to get keys K of shape (B, T, d_head)."""
+    return np.matmul(x, w_k)
 
 # Step 102 - compute_value (not yet solved)
 # TODO: implement
