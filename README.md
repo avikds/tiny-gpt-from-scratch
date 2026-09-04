@@ -64,7 +64,7 @@ python scaffold.py
 - [x] **52.** generate_sequence
 - [x] **53.** decode_generated_sequence
 - [x] **54.** log_prob_of_pair
-- [ ] **55.** sum_negative_log_probs
+- [x] **55.** sum_negative_log_probs
 - [ ] **56.** average_nll
 - [ ] **57.** initialize_w_random
 - [ ] **58.** scale_w_small
