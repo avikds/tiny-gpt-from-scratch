@@ -96,7 +96,7 @@ python scaffold.py
 - [x] **84.** layernorm_forward_mean
 - [x] **85.** layernorm_forward_variance
 - [x] **86.** layernorm_forward_normalize
-- [ ] **87.** layernorm_forward_affine
+- [x] **87.** layernorm_forward_affine
 - [ ] **88.** layernorm_backward_subtract_mean
 - [ ] **89.** layernorm_backward_divide_std
 - [ ] **90.** layernorm_backward_full
