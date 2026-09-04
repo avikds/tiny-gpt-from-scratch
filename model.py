@@ -1724,8 +1724,10 @@ def initialize_adam_step_counter():
     """Return the initial Adam step counter t."""
     return 0
 
-# Step 149 - adam_increment_step (not yet solved)
-# TODO: implement
+# Step 149 - adam_increment_step
+def adam_increment_step(t):
+    """Return t + 1 so Adam bias correction sees a positive step."""
+    return int(t + 1)
 
 # Step 150 - adam_update_first_moment (not yet solved)
 # TODO: implement
