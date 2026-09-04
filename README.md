@@ -157,7 +157,7 @@ python scaffold.py
 - [x] **145.** full_model_forward
 - [x] **146.** full_model_backward
 - [x] **147.** initialize_adam_moments
-- [ ] **148.** initialize_adam_step_counter
+- [x] **148.** initialize_adam_step_counter
 - [ ] **149.** adam_increment_step
 - [ ] **150.** adam_update_first_moment
 - [ ] **151.** adam_update_second_moment

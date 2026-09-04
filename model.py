@@ -1719,8 +1719,10 @@ def initialize_adam_moments(model_params):
 
     return model_params, model_params
 
-# Step 148 - initialize_adam_step_counter (not yet solved)
-# TODO: implement
+# Step 148 - initialize_adam_step_counter
+def initialize_adam_step_counter():
+    """Return the initial Adam step counter t."""
+    return 0
 
 # Step 149 - adam_increment_step (not yet solved)
 # TODO: implement
