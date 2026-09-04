@@ -63,8 +63,11 @@ def make_2d_zeros(rows, cols):
     """Return a 2D NumPy array of zeros with shape (rows, cols)."""
     return np.zeros((rows, cols))
 
-# Step 12 - make_2d_random (not yet solved)
-# TODO: implement
+# Step 12 - make_2d_random
+def make_2d_random(rows, cols, seed):
+    """Return a (rows, cols) array of uniform floats in [0, 1) seeded by `seed`."""
+    rng = np.random.default_rng(seed)
+    return rng.random((rows, cols))
 
 # Step 13 - index_element (not yet solved)
 # TODO: implement
