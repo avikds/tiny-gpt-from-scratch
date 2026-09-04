@@ -804,8 +804,10 @@ def compute_value(x, w_v):
     # Project x of shape (B, T, d_model) by w_v of shape (d_model, d_head).
     return np.matmul(x, w_v)
 
-# Step 103 - compute_attention_scores (not yet solved)
-# TODO: implement
+# Step 103 - compute_attention_scores
+def compute_attention_scores(q, k):
+    """Return raw attention scores Q @ K^T with shape (B, T, T)."""
+    return np.matmul(q, np.swapaxes(k, -1, -2))
 
 # Step 104 - scale_attention_scores (not yet solved)
 # TODO: implement
